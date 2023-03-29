@@ -5,6 +5,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { ThemeProvider, createTheme } from "@rneui/themed";
 import AppContent from "./AppContent";
+import style from "./App-stylesheet";
 
 const theme = createTheme({
   lightColors: {
@@ -19,12 +20,3 @@ const theme = createTheme({
 export default function App() {
   return <ThemeProvider theme={theme}>{<AppContent />}</ThemeProvider>;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
