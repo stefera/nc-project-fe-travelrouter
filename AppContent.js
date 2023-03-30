@@ -11,7 +11,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 // const MoreStack = createNativeStackNavigator();
 
 export default function AppContent({ styles }) {
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({ name: "guest" });
   // const [listOfHolidays, setListOfHolidays] = useState([]); moved to Homepage
   const [holiday, setHoliday] = useState({});

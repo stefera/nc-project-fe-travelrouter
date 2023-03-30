@@ -1,24 +1,24 @@
-import { config } from "dotenv";
-config();
+// import { config } from "dotenv";
+// config();
 
-import { createClient } from "@google/maps";
+// import { Client, createClient } from "@google/maps";
 
 import { Configuration, OpenAIApi } from "openai";
 
-const gmaps = createClient({
-  key: process.env.API_KEY_MAPS,
-  Promise: Promise,
-});
-const openai = new OpenAIApi(
-  new Configuration({
-    apiKey: process.env.API_KEY,
-  })
-);
-
-const stringInput =
-  "Give me a list of locations that I can visit over 5 days in Manchester, for 3 people that are interested in nightclubs and dinner. The output should be a JSON object, with the form of an array of javascript objects. Each location should have a name and address property.";
-
+// const gmaps = createClient({
+//   key: process.env.API_KEY_MAPS,
+//   Promise: Promise,
+// });
 export const fetchItinerary = () => {
+  const openai = new OpenAIApi(
+    new Configuration({
+      apiKey: "sk - ksCzdEgehqAXcJp2vBFWT3BlbkFJR4dMpB6WTaPi2M8i51kW",
+    })
+  );
+
+  const stringInput =
+    "Give me a list of locations that I can visit over 5 days in Manchester, for 3 people that are interested in nightclubs and dinner. The output should be a JSON object, with the form of an array of javascript objects. Each location should have a name and address property.";
+
   return openai
     .createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -54,22 +54,22 @@ export const fetchItinerary = () => {
     });
 };
 
-export const geoCodelocations = (locations) => {
-  Promise.all(
-    locations.map(async (location) => {
-      const response = await gmaps
-        .geocode({ address: location.address })
-        .asPromise();
-      if (response.status === 200) {
-        location.coordinates = response.json.results[0].geometry.location;
-      } else {
-        console.log(response.error_message);
-      }
-      console.log(locations, "geoCodedArray");
-    })
-  ).then((result) => {
-    console.log(result);
-  });
-};
+// export const geoCodelocations = (locations) => {
+//   Promise.all(
+//     locations.map(async (location) => {
+//       const response = await gmaps
+//         .geocode({ address: location.address })
+//         .asPromise();
+//       if (response.status === 200) {
+//         location.coordinates = response.json.results[0].geometry.location;
+//       } else {
+//         console.log(response.error_message);
+//       }
+//       console.log(locations, "geoCodedArray");
+//     })
+//   ).then((result) => {
+//     console.log(result);
+//   });
+// };
 
-geoCodelocations([{ address: London }]);
+// geoCodelocations([{ address: London }]);

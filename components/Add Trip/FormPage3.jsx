@@ -1,14 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import React, {useState} from "react";
-import {View, Text, StyleSheet, CheckBox, Header} from "react-native"
+import {View, Text, StyleSheet, CheckBox, Header, ActivityIndicator, FlatList} from "react-native"
 import reactDom from "react-dom";
-import { Button } from "react-native-paper";
+import { Button, List } from "react-native-paper";
 import styles from "../../App-stylesheet";
-import { NestableScrollContainer, NestableDraggableFlatList } from "react-native-draggable-flatlist";
-import { ListItem } from "@rneui/themed";
+// import { NestableScrollContainer, NestableDraggableFlatList } from "react-native-draggable-flatlist";
+import { Card, ListItem } from "@rneui/themed";
 
 
-const FormPage3 = (()=>{
+const FormPage3 = (({isLoading, setIsLoading})=>{
 
     const [locationsList, setLocationsList] = useState([])
 
@@ -25,8 +25,8 @@ const FormPage3 = (()=>{
   ];
   
   return (isLoading? <View>
-    <Button style={styles.primaryButton}>
-    Generate itenarary
+    <Button title = {"Generate itenarary"}style={styles.primaryButton}>
+    
     </Button>
     <View style={[styles.loader, styles.horizontal]}>
     
@@ -35,38 +35,20 @@ const FormPage3 = (()=>{
     </View>
   : 
   <View>
-    <Button style={styles.primaryButton}>
-    Generate itenarary
+    <Button title = {"Generate itenarary"}style={styles.primaryButton}>
     </Button>
-    <NestableScrollContainer>
+    
       <Header text='List 1' />
-      <NestableDraggableFlatList
-        data={locationsList.filter((item)=>item.day===1)}
-        renderItem={((item)=>{<ListItem style={styles} item={item}/>})}
-        keyExtractor={((item)=>item.id)}
-        onDragEnd={({ data }) => console.log(data)}
-      />
-      <Header text='List 2' />
-      <NestableDraggableFlatList
+      <FlatList
         data={locationsList}
-        renderItem={((item)=>{<ListItem style={styles} item={item}/>})}
+        renderItem={((item)=>{<Card style={styles} item={item}/>})}
         keyExtractor={((item)=>item.id)}
-        onDragEnd={({ data }) => console.log(data)}
+        // onDragEnd={({ data }) => console.log(data)}
       />
-      {/* <Header text='List 3' />
-      <NestableDraggableFlatList
-        data={data3}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        onDragEnd={({ data }) => setData3(data)}
-      /> */}
-    </NestableScrollContainer>
+
   </View>)
   
 })
-
-
- 
 
 
 export default FormPage3;
