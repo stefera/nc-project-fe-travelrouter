@@ -1,64 +1,59 @@
 import { StatusBar } from "expo-status-bar";
 import React, {useState} from "react";
-import {View} from "react-native"
-import reactDom from "react-dom";
+import {View, Text, Button} from "react-native"
 import DestinationDetails from "./DestinationDetails";
 import FormPage2 from "./FormPage2";
+import Activities from "./Activities";
 
-export const Form = (()=>{
+const Form = (()=>{
 
     const [page, setPage] = useState(0)
+    const [stops, setStops] = useState([])
+    const [tripLength, setTripLength] = useState(0)
+    const [checkedList, setCheckedList] = useState([])
     const [formData, setFormData] = useState(
        [  
         { testdestinationOne : ""},
         { testDestaintionTwo : ""}
-    //     {
-    //     destinationOne : "",
-    //     destinationTwo: "",
-    //     destinationThree: "",
-    //     destinationFour: "",
-    //     destinationFive: ""
-    // },
 ])
-    const formTitles = ["Destinations", "Preferences"]
+    const formTitles = ["Destinations", "Preferences", "Activities"]
 
     const pageDisplay = () => {
         if (page === 0) {
-            return <DestinationDetails formData={formData} setFormData={setFormData}/>
+            return <DestinationDetails stops={stops} setStops={setStops} tripLength={tripLength} setTripLength={setTripLength}/>
         } else if (page === 1) {
-            return <FormPage2 />
+            return <FormPage2 checkedList={checkedList} setCheckedList={setCheckedList}/>
+        } else if (page === 2) {
+            return <Activities />
         }
     }
 
     return (
-        <View>
-
-        {/* <div className="form">
-            <div className="progress-bar">
-                <div style={{width: page === 0 ? "50%" : "100%"}}><p>add progress bar css here</></p>
-            </div>
-            <h1> Enter Your Destinations</h1>
-            <div className="form-container"></div>
-            <div className="header">
-                <h1>{formTitles[page]}</h1>
-            </div>
-            <div className="body">{pageDisplay()}</div>
-            <div className="footer">
-                <button
-                disabled={page === 0}
-                onClick={() => {
-                    setPage((currPage) => currPage -1)
-                }}>Prev</button>
-                <button 
-                disabled={page === formTitles.length -1}
-                onClick={() => {
-                    setPage((currPage) => currPage +1)
-                }}>Next</button>
-            </div>
-        </div> */}
+        <View className="form">
+            <View className="progress-bar" style={{width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%"}}>
+                   <Text>add progress bar css here</Text>
+            </View>        
+                <View className="header">
+                    <Text>{formTitles[page]}</Text>
                 </View>
+                    <View className="body">{pageDisplay()}</View>
+                        <View className="footer"> */
+                            <Button
+                            title="Prev"
+                            disabled={page === 0}
+                            onClick={() => {
+                            setPage((currPage) => currPage -1)
+                            }} />
+                            <Button 
+                            title="Next"
+                            disabled={page === formTitles.length -1}
+                            onClick={() => {
+                            setPage((currPage) => currPage +1)
+                            }} />
+                        </View>    
+        </View>
         )
 })
 
 
-export default Form
+export default Form;

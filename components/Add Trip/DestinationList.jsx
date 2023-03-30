@@ -1,10 +1,9 @@
-import { View, Text } from "react-native"
+import { View, Text, Butt, FlatList } from "react-native"
 import React, {useState} from "react";
 
-const DestinationList = (( {stops, setStops} )=>{
+const DestinationList = (( {stops, setStops, tripLength} )=>{
 
     const handleDelete = (index) => {
-        console.log(index, "index")
         const listOfStops = [...stops]
         listOfStops.splice(index, 1)
         setStops(listOfStops)
@@ -12,21 +11,24 @@ const DestinationList = (( {stops, setStops} )=>{
     }
     return (
         <View>
-            <Text>list</Text>
-            <ul>
-            {
+            <Text>Your {tripLength} day trip destinations:</Text>
+                <FlatList>
+
+                {
                 stops.map((stop, index) => {
                     return (
-                        <li key={stop}>
-                            <h1>{stop}</h1>
-                            <button onClick={() => handleDelete(index)}>Remove</button>
-                        </li>
+                            <li key={index}>
+                                <Text>{stop}</Text>
+                                <Button 
+                                title="Remove"
+                                onClick={() => handleDelete(index)} />
+                            </li>
 
-                    )
-                })
-            }
+                            )
+                    })
+                }
 
-            </ul>
+                </FlatList> 
         </View>
     )
 })

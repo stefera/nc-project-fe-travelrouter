@@ -3,9 +3,8 @@ import React, {useState} from "react";
 import {View, Text, StyleSheet, CheckBox} from "react-native"
 import reactDom from "react-dom";
 
-const FormPage2 = (()=>{
+const FormPage2 = (( {checkedList, setCheckedList})=>{
 
-    const [checkedList, setCheckedList] = useState([])
 
      const preferences = [
     { id: "1", value: "Museums" },
@@ -48,33 +47,7 @@ const FormPage2 = (()=>{
             })
             }
         </View>
-    //     <View>
-
-    //     <View style={styles.container}>
-    //     <View style={styles.checkboxContainer}>
-    //     <CheckBox
-    //       value={checkOne}
-    //       onValueChange={setCheckOne}
-    //       style={styles.checkbox}
-    //     />
-    //     <Text style={styles.label}>preferences[0]</Text>
-    //   </View>
-    //   </View>
-                    // </View>
-            /* <div>
-                <ul>
-                { 
-                preferences.map((preference, index) => {
-                    return (
-                        <li key={index}>
-                        <h1>{preference}</h1>
-                        </li>
-                        )
-                })
-            }
-                </ul>
-                
-                </div> */
+  
 
 
     )
