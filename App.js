@@ -5,7 +5,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import { ThemeProvider, createTheme } from "@rneui/themed";
 import AppContent from "./AppContent";
+
 import styles from "./App-stylesheet";
+
 
 const theme = createTheme({
   lightColors: {
