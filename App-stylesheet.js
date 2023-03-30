@@ -77,7 +77,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffff",
     flexGrow: 1,
   },
-
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  horizontal: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10,
+  },
   // .primaryButton{
   //   backgroundColor: #1143f8;
   //   color: white;

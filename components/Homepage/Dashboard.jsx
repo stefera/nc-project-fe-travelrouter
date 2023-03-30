@@ -14,8 +14,6 @@ const Dashboard = (({user, styles,listOfHolidays})=>{
         <DashboardHeader user={user} styles={styles} listOfHolidays={listOfHolidays}/>
         <Text style={styles.h2}>Welcome back, {user.name}</Text>
         <Text style={styles.body}>Your next trip is in 5 days</Text>
-
-        
     </View>)
 })
 

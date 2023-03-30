@@ -4,8 +4,9 @@ import {View} from "react-native"
 import reactDom from "react-dom";
 import DestinationDetails from "./DestinationDetails";
 import FormPage2 from "./FormPage2";
+import FormPage3 from "./FormPage3";
 
-export const Form = (()=>{
+export const Form = (({isLoading, setIsLoading})=>{
 
     const [page, setPage] = useState(0)
     const [formData, setFormData] = useState(
@@ -56,6 +57,7 @@ export const Form = (()=>{
                 }}>Next</button>
             </div>
         </div> */}
+        <FormPage3 isLoading={isLoading} setIsLoading={setIsLoading}/>
                 </View>
         )
 })
