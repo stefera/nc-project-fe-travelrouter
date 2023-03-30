@@ -14,10 +14,10 @@ import { Header as HeaderRNE, HeaderProps, Icon } from '@rneui/themed';
 
 
 
-const DashboardHeader = ({user}) => {
+const DashboardHeader = ({user, styles}) => {
 
   return (<View>
-        
+        <Text>{user.name}</Text>
     </View>)
 
 };
