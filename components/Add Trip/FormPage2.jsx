@@ -43,7 +43,7 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
         setCheckedList([...value]);
       }
   };
-  const renderItem = ( item ) => (
+  const RenderItem = ( item ) => (
     <TouchableHighlight
       style={{
         width: '33.33%',
@@ -65,7 +65,7 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
       <View style={{ flex: 1 }}>
       <FlatList
         data={preferences}
-        renderItem={renderItem}
+        renderItem={RenderItem}
         numColumns={3}
         keyExtractor={(item) => item.id}
       />
