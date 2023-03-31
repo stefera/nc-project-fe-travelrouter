@@ -1,58 +1,60 @@
-import { StatusBar } from "expo-status-bar";
+import { Input } from "@rneui/themed";
 import React, {useState} from "react";
-import {View, Text} from "react-native"
-import reactDom from "react-dom";
+import {View, Text, Button, TextInput} from "react-native"
 import DestinationList from "./DestinationList";
 
 
-const DestinationDetails = (( {formData, setFormData})=>{
+const DestinationDetails = ({stops, setStops, tripLength, setTripLength})=>{
 
-    const [stops, setStops] = useState([])
     const [textInput, setTextInput] = useState("")
+    const [numberInput, setNumberInput] = useState(0)
+  
 
 
-// const handleChange = (event) => {
-//         const { name, value} = event.target;
-//         setFormData({
-//             ...formData,
-//             [name]: value
-//         })
-//         .catch((err) => {
-//             console.log(err)
-//         })
-//     }
-
-    const handleAdd = (event) => {
+    const handleAdd = ({setStops, textInput}) => {
         setStops([...stops, textInput])
-        console.log(stops, "This is the stops")
         setTextInput("")
+        console.log(setStops)
     }
     return (
         <View>
+            <View className="destination-details-form">
+               <Text>How many days is your trip?</Text>
+               <Input
+                    value={numberInput} 
+                    onChange={setNumberInput}
+                    keyboardType={"number-pad"}
+                    placeholder="Length of trip"
+                />
+                <Button
+                        type="submit"
+                        title="Add"
+                        onPress={() => setTripLength(numberInput)}
+                />
+                <Text>Add Destination</Text>
+                <Input
+                    value={textInput} 
+                    onChangeText={setTextInput}
+                    placeholder={"Destination"}/>
+                
+                <Button 
+                    type="submit"
+                    title="Add"
+                    onPress={() => handleAdd(stops, textInput)} 
+                />
 
-        {/* <div className="destination-details-form">
-            <p> Destination Details</p>
-            <label htmlFor="destination">Add Destination</label>
-            <input
-            value={textInput} onChange={(event) => setTextInput(event.target.value)}
-            type="text"
-            placeholder="destination"></input>
-            <button 
-            type="submit"
-            onClick={(handleAdd)}>Add</button>
-            <br></br>
-
-            < DestinationList stops={stops} setStops={setStops}/>
-        </div>
+                    < DestinationList stops={stops} setStops={setStops} tripLength={tripLength}/>
+        </View>
       
-        <div>
-        <pre>
+        <View>
+            <Text>{stops}</Text>
+        {/* <pre>
             {JSON.stringify(textInput)}
-        </pre>
-        </div> */}
+        </pre> */}
+        </View> 
         
         </View>
     )
-})
+}
 
 export default DestinationDetails

@@ -1,17 +1,14 @@
 import React from "react";
 import {View,Text} from "react-native"
-import AddHolidayForm from "./AddHolidayForm";
-import { Form } from "./Form";
-import SocialFeed from "../Homepage/SocialFeed"
-
+import Form from "./Form";
+// var About = require('./components/Home').default
+// const Form = require('./Form').default
 
 const AddTrip = (()=>{
 
     return (
         <View>
-            <Text> Add trip ▼▼</Text>
             < Form />
-            < SocialFeed />
         </View>
 
     )
