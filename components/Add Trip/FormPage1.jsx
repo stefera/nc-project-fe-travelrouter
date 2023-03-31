@@ -7,19 +7,18 @@ import DestinationList from "./DestinationList";
 
 
 
-const FormPage1 = ({stops, setStops, arrivalDate, setArrivalDate})=>{
+const FormPage1 = ({stops,textInput, setTextInput, destination,setDestination, setStops, arrivalDate, setArrivalDate, arrivalDateInput, setArrivalDateInput,departureDateInput,setDepartureDateInput, departureDate, setDepartureDate})=>{
 
-    const [textInput, setTextInput] = useState("")
-    const [numberInput, setNumberInput] = useState(0)
-    const [arrivalDateInput, setArrivalDateInput] = useState(new Date())
-    const [departureDateInput, setDepartureDateInput] = useState(new Date())
+   
+    //const [numberInput, setNumberInput] = useState(0)
+    
   
 
-    const handleAdd = ({setStops, textInput}) => {
-        setStops([...stops, textInput])
-        setTextInput("")
-        console.log(setStops)
-    }
+    // const handleAdd = ({setStops, textInput}) => {
+    //     setStops([...stops, textInput])
+    //     setTextInput("")
+    //     console.log(setStops)
+    // }
     return (
         <View>
             <View className="destination-details-form">
@@ -28,16 +27,25 @@ const FormPage1 = ({stops, setStops, arrivalDate, setArrivalDate})=>{
             <Input
                 // label={"Destination"}
                 // labelStyle={styles.inputHeader}
-                    value={textInput} 
-                    onChangeText={setTextInput}
+                    value={destination} 
+                    onChangeText={((value)=>{
+                       setTextInput(value)   
+                       setDestination(value)                     
+                    
+                    })
+                }
                     placeholder={"Enter Destination City"}/>
 
                <Text style={styles.inputHeaderMargin}>Arrival Date</Text>
                <DateTimePicker style={styles.dateTimePicker}
-                    textColor={arrivalDateInput<=new Date()?"#ababab":"#00000"}
                     minimumDate={new Date()}
-                    value={arrivalDateInput} 
-                    onChange={() => setArrivalDateInput(arrivalDateInput)}
+                    value={arrivalDate? arrivalDate:arrivalDateInput} 
+                    onChange={(value) => {
+                        //setArrivalDateInput(value)
+                        //setArrivalDate(value)
+                        //setDepartureDateInput(value)
+                    }
+                    }
                     
                     // placeholder="Select Arrival Date"
                 />
@@ -48,9 +56,8 @@ const FormPage1 = ({stops, setStops, arrivalDate, setArrivalDate})=>{
                 /> */}
                 <Text style={styles.inputHeaderMargin}>Departure Date</Text>
                <DateTimePicker style={styles.dateTimePicker}
-                    textColor={arrivalDateInput<=new Date()?"#ababab":"#00000"}
-                    minimumDate={arrivalDateInput}
-                    value={departureDateInput} 
+                    minimumDate={departureDate? departureDate:departureDateInput}
+                    value={departureDate? departureDate:departureDateInput} 
                     onChange={() => setDepartureDateInput(departureDateInput)}
                     
                     // placeholder={new Date()}

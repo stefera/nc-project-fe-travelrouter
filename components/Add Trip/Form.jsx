@@ -11,23 +11,37 @@ const Form = (()=>{
 
     const [page, setPage] = useState(0)
     const [stops, setStops] = useState([])
-    //
-    const [tripLength, setTripLength] = useState(0)
-    const [arrivalDate, setArrivalDate] = useState("")
-    const [departureDate, setDepartureDate] = useState("")
-    //
+    const[destination, setDestination] = useState("")
+    const [textInput, setTextInput] = useState("")
+
+    const [arrivalDate, setArrivalDate] = useState()
+    const [departureDate, setDepartureDate] = useState()
+    const [arrivalDateInput, setArrivalDateInput] = useState(new Date())
+    const [departureDateInput, setDepartureDateInput] = useState(arrivalDateInput)
+   
     const [checkedList, setCheckedList] = useState([])
-    const [formData, setFormData] = useState(
-       [  
-        { testdestinationOne : ""},
-        { testDestaintionTwo : ""}
-])
+
     const formTitles = ["Destination Details", "Preferences", "Activities"]
     const subtitles = ["Input your holiday details below", "Let us know what you're interested in on this holiday", "Modify and save your itenarary below"]
 
     const pageDisplay = () => {
         if (page === 0) {
-            return <FormPage1 stops={stops} setStops={setStops} arrivalDate={arrivalDate} setArrivalDate={setArrivalDate} departureDate={departureDate} setDepartureDate={setDepartureDate} />
+            return <FormPage1 
+            stops={stops} 
+            setStops={setStops} 
+            textInput={textInput}
+            setTextInput={setTextInput}
+            destination={destination}
+            setDestination={setDestination}
+            arrivalDate={arrivalDate} 
+            setArrivalDate={setArrivalDate} 
+            departureDate={departureDate} 
+            setDepartureDate={setDepartureDate} 
+            arrivalDateInput={arrivalDateInput}
+            setArrivalDateInput={setArrivalDateInput}
+            departureDateInput={departureDateInput}
+            setDepartureDateInput ={setDepartureDateInput}
+            />
         } else if (page === 1) {
             return <FormPage2 checkedList={checkedList} setCheckedList={setCheckedList}/>
         } else if (page === 2) {
