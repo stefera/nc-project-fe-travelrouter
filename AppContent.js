@@ -5,23 +5,23 @@ import Homepage from "./components/Homepage/Homepage";
 import AddTrip from "./components/Add Trip/AddTrip";
 import ViewHoliday from "./components/View Holiday/ViewHoliday";
 import ProfileAndSettings from "./components/Profile+Settings/ProfileAndSettings";
-import { useState } from "react";
+import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 // const HomeStack = createNativeStackNavigator();
 // const AddTripStack = createNativeStackNavigator();
 // const MoreStack = createNativeStackNavigator();
 
-export default function AppContent() {
+export default function AppContent({ styles }) {
   const [isLoading, setIsLoading] = useState();
   const [user, setUser] = useState({ name: "guest" });
-  const [listOfHolidays, setListOfHolidays] = useState([]);
+  // const [listOfHolidays, setListOfHolidays] = useState([]); moved to Homepage
   const [holiday, setHoliday] = useState({});
   const [preferences, setPreferences] = useState([]);
   const [newComment, setNewComment] = useState("");
 
   const Tab = createBottomTabNavigator();
   const HomeScreen = () => {
-    return <Homepage />;
+    return <Homepage styles={styles} user={user} />;
   };
   const AddTripScreen = () => {
     return <AddTrip />;
@@ -40,6 +40,7 @@ export default function AppContent() {
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={28} />
             ),
+            headerShown: false,
           }}
         />
         <Tab.Screen
