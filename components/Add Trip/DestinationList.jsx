@@ -1,10 +1,9 @@
-import { View, Text } from "react-native"
+import { View, Text, Button, StyleSheet } from "react-native"
 import React, {useState} from "react";
 
-const DestinationList = (( {stops, setStops} )=>{
+const DestinationList = (( {stops, setStops, tripLength} )=>{
 
     const handleDelete = (index) => {
-        console.log(index, "index")
         const listOfStops = [...stops]
         listOfStops.splice(index, 1)
         setStops(listOfStops)
@@ -12,23 +11,36 @@ const DestinationList = (( {stops, setStops} )=>{
     }
     return (
         <View>
-            <Text>list</Text>
-            <ul>
-            {
+            <Text>Your {tripLength} day trip destinations:</Text>
+        <Text>  
+                {
                 stops.map((stop, index) => {
                     return (
-                        <li key={stop}>
-                            <h1>{stop}</h1>
-                            <button onClick={() => handleDelete(index)}>Remove</button>
-                        </li>
+                        <View key={index}>
+                                <Text>{stop}</Text>
+                                <Button 
+                                title="Remove"
+                                onPress={() => handleDelete(index)} />
 
-                    )
-                })
-            }
+                        </View>
 
-            </ul>
+                            )
+                    })
+                }
+
+        </Text>
+
         </View>
     )
+})
+
+const styles = StyleSheet.create({
+    container: {
+
+    }
+
+    
+
 })
 
 export default DestinationList

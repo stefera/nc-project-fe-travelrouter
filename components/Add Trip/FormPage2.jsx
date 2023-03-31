@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React, {useState} from "react";
-import {View, Text, StyleSheet, CheckBox} from "react-native"
+import {View, Text, TextInput, CheckBox} from "react-native"
 import reactDom from "react-dom";
+import { Input } from "@rneui/themed";
 
-const FormPage2 = (()=>{
+const FormPage2 = (( {checkedList, setCheckedList})=>{
 
-    const [checkedList, setCheckedList] = useState([])
 
      const preferences = [
     { id: "1", value: "Museums" },
@@ -25,6 +25,7 @@ const FormPage2 = (()=>{
  
     if (isChecked) {
       setCheckedList([...checkedList, value]);
+      console.log(checkedList)
     } else {
       //Remove unchecked item from checkList
       const filteredList = checkedList.filter((item) => item !== value);
@@ -34,47 +35,23 @@ const FormPage2 = (()=>{
   };
     return (
         <View>
+          <Text>
             {
             preferences.map((item, index) => {
                 return (
-                    <div key={item.id}>
-                    <input
+                    <View key={item.id}>
+                    <Input
                     type ="checkbox"
                     value ={item.value}
                     onChange={handleSelect}/>
-                    <label>{item.value}</label>
-                    </div>
+                    <Text>{item.value}</Text>
+                    </View>
                     )
             })
             }
+          </Text>
         </View>
-    //     <View>
-
-    //     <View style={styles.container}>
-    //     <View style={styles.checkboxContainer}>
-    //     <CheckBox
-    //       value={checkOne}
-    //       onValueChange={setCheckOne}
-    //       style={styles.checkbox}
-    //     />
-    //     <Text style={styles.label}>preferences[0]</Text>
-    //   </View>
-    //   </View>
-                    // </View>
-            /* <div>
-                <ul>
-                { 
-                preferences.map((preference, index) => {
-                    return (
-                        <li key={index}>
-                        <h1>{preference}</h1>
-                        </li>
-                        )
-                })
-            }
-                </ul>
-                
-                </div> */
+  
 
 
     )
