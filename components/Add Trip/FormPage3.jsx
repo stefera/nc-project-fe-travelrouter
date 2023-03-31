@@ -1,7 +1,7 @@
 import {View, Text} from "react-native"
 
 
-const Activities =(() => {
+const FormPage3 =(() => {
     return (
 
     <View>
@@ -12,4 +12,4 @@ const Activities =(() => {
 })
 
 
-export default Activities;
+export default FormPage3;
