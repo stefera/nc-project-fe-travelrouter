@@ -37,7 +37,7 @@ const Form = (()=>{
                     <Text>{formTitles[page]}</Text>
                 </View>
                     <View className="body">{pageDisplay()}</View>
-                        <View className="footer"> */
+                        <View className="footer"> 
                             <Button
                             title="Prev"
                             disabled={page === 0}

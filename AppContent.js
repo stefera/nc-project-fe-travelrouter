@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Homepage from "./components/Homepage/Homepage";
 import AddTrip from "./components/Add Trip/AddTrip";
-import ViewHoliday from "./components/View Holiday/ViewHoliday"
+import ViewHoliday from "./components/View Holiday/ViewHoliday";
 import ProfileAndSettings from "./components/Profile+Settings/ProfileAndSettings";
 import { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -32,7 +32,7 @@ export default function AppContent() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Home" activeColor="#F56853">
+      <Tab.Navigator initialRouteName="Add Holiday" activeColor="#F56853">
         <Tab.Screen
           name="Home"
           component={HomeScreen}

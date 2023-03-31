@@ -1,3 +1,4 @@
+import { Input } from "@rneui/themed";
 import React, {useState} from "react";
 import {View, Text, Button, TextInput} from "react-native"
 import DestinationList from "./DestinationList";
@@ -19,10 +20,10 @@ const DestinationDetails = ({stops, setStops, tripLength, setTripLength})=>{
         <View>
             <View className="destination-details-form">
                <Text>How many days is your trip?</Text>
-               <TextInput
+               <Input
                     value={numberInput} 
-                    onChangeText={setNumberInput}
-                    keyboardType="numeric"
+                    onChange={setNumberInput}
+                    keyboardType={"number-pad"}
                     placeholder="Length of trip"
                 />
                 <Button
@@ -31,10 +32,11 @@ const DestinationDetails = ({stops, setStops, tripLength, setTripLength})=>{
                         onPress={() => setTripLength(numberInput)}
                 />
                 <Text>Add Destination</Text>
-                <TextInput
+                <Input
                     value={textInput} 
                     onChangeText={setTextInput}
-                    placeholder="destination"/>
+                    placeholder={"Destination"}/>
+                
                 <Button 
                     type="submit"
                     title="Add"

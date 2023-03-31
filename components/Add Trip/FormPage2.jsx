@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, {useState} from "react";
 import {View, Text, TextInput, CheckBox} from "react-native"
 import reactDom from "react-dom";
+import { Input } from "@rneui/themed";
 
 const FormPage2 = (( {checkedList, setCheckedList})=>{
 
@@ -39,7 +40,7 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
             preferences.map((item, index) => {
                 return (
                     <View key={item.id}>
-                    <input
+                    <Input
                     type ="checkbox"
                     value ={item.value}
                     onChange={handleSelect}/>
