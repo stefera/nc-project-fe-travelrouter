@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React, {useState} from "react";
-import {View, Text, TextInput, CheckBox} from "react-native"
+import {View, Text, TextInput, CheckBox, ScrollView, FlatList} from "react-native"
 import reactDom from "react-dom";
 import { Input } from "@rneui/themed";
+import styles from "../../App-stylesheet";
+import { TouchableHighlight } from "react-native";
 
 const FormPage2 = (( {checkedList, setCheckedList})=>{
-
-
      const preferences = [
     { id: "1", value: "Museums" },
     { id: "2", value: "Art" },
@@ -18,39 +18,59 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
     { id: "8", value: "Sport" },
     { id: "9", value: "Spas" },
   ];
-
-  const handleSelect = (event) => {
-    const value = event.target.value;
-    const isChecked = event.target.checked;
+  // const handleSelect = (event) => {
+  //   const value = event.target.value;
+  //   const isChecked = event.target.checked;
  
-    if (isChecked) {
-      setCheckedList([...checkedList, value]);
-      console.log(checkedList)
-    } else {
-      //Remove unchecked item from checkList
-      const filteredList = checkedList.filter((item) => item !== value);
-      setCheckedList(filteredList);
+  //   if (isChecked) {
+  //     setCheckedList([...checkedList, value]);
+  //     console.log(checkedList)
+  //   } else {
+  //     //Remove unchecked item from checkList
+  //     const filteredList = checkedList.filter((item) => item !== value);
+  //     setCheckedList(filteredList);
+  //   }
+  //   console.log(checkedList)
+  // };
+  const handleSelection = (value) => {
+    if (checkedList.includes(value)) {
+      setCheckedList(checkedList.filter((item) => item !== value));
+    } else if (!checkedList.includes(value)&& checkedList) {
+      setCheckedList([...checkedList, value])
     }
-    console.log(checkedList)
+      else{
+
+        setCheckedList([...value]);
+      }
   };
+  const RenderItem = ( item ) => (
+    <TouchableHighlight
+      style={{
+        width: '33.33%',
+        aspectRatio: 1,
+        borderWidth: 1,
+        borderColor: checkedList.includes(item.value) ? 'green' : 'black',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+      onPress={() => handleSelection(item.value)}
+      key={item.id}
+    >
+      <Text style={styles.body}>{item.value}</Text>
+    </TouchableHighlight>
+  );
+
+
     return (
-        <View>
-          <Text>
-            {
-            preferences.map((item, index) => {
-                return (
-                    <View key={item.id}>
-                    <Input
-                    type ="checkbox"
-                    value ={item.value}
-                    onChange={handleSelect}/>
-                    <Text>{item.value}</Text>
-                    </View>
-                    )
-            })
-            }
-          </Text>
-        </View>
+      <View style={{ flex: 1 }}>
+      <FlatList
+        data={preferences}
+        renderItem={RenderItem}
+        numColumns={3}
+        keyExtractor={(item) => item.id}
+      />
+      
+    </View>
   
 
 
