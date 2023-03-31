@@ -1,9 +1,12 @@
 
-
+import Map from "./Map";
 
 
 const ViewHoliday = (() => {
 
+    return(
+        <Map />
+    )
 
     
 })

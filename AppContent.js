@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Homepage from "./components/Homepage/Homepage";
 import AddTrip from "./components/Add Trip/AddTrip";
+import ViewHoliday from "./components/View Holiday/ViewHoliday"
 import ProfileAndSettings from "./components/Profile+Settings/ProfileAndSettings";
 import { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -26,7 +27,7 @@ export default function AppContent() {
     return <AddTrip />;
   };
   const MoreScreen = () => {
-    return <ProfileAndSettings />;
+    return <ViewHoliday />;
   };
 
   return (

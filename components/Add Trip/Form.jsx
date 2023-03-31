@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, {useState} from "react";
-import {View, Text, Button} from "react-native"
+import {View, Text, Button, TextComponent} from "react-native"
 import DestinationDetails from "./DestinationDetails";
 import FormPage2 from "./FormPage2";
 import Activities from "./Activities";
@@ -41,13 +41,13 @@ const Form = (()=>{
                             <Button
                             title="Prev"
                             disabled={page === 0}
-                            onClick={() => {
+                            onPress={() => {
                             setPage((currPage) => currPage -1)
                             }} />
                             <Button 
                             title="Next"
                             disabled={page === formTitles.length -1}
-                            onClick={() => {
+                            onPress={() => {
                             setPage((currPage) => currPage +1)
                             }} />
                         </View>    

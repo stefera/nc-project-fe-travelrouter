@@ -1,44 +1,45 @@
-import { StatusBar } from "expo-status-bar";
 import React, {useState} from "react";
 import {View, Text, Button, TextInput} from "react-native"
-import reactDom from "react-dom";
 import DestinationList from "./DestinationList";
 
 
-const DestinationDetails = (({stops, setStops, tripLength, setTripLength})=>{
+const DestinationDetails = ({stops, setStops, tripLength, setTripLength})=>{
 
     const [textInput, setTextInput] = useState("")
-    const [numberInput, setNumberInput] = useState(null)
+    const [numberInput, setNumberInput] = useState(0)
+  
 
 
-
-    const handleAdd = (event) => {
+    const handleAdd = ({setStops, textInput}) => {
         setStops([...stops, textInput])
         setTextInput("")
+        console.log(setStops)
     }
     return (
         <View>
-
             <View className="destination-details-form">
                <Text>How many days is your trip?</Text>
                <TextInput
-                value={tripLength} onChange={(event) => setTripLength(event.target.value)}
-                type="number"
-                placeholder="Length of trip"/>
-                    <Button
+                    value={numberInput} 
+                    onChangeText={setNumberInput}
+                    keyboardType="numeric"
+                    placeholder="Length of trip"
+                />
+                <Button
                         type="submit"
                         title="Add"
-                        onClick={(setNumberInput)}
-                        />
+                        onPress={() => setTripLength(numberInput)}
+                />
                 <Text>Add Destination</Text>
                 <TextInput
-                value={textInput} onChange={(event) => setTextInput(event.target.value)}
-                type="text"
-                placeholder="destination"/>
+                    value={textInput} 
+                    onChangeText={setTextInput}
+                    placeholder="destination"/>
                 <Button 
-                type="submit"
-                title="Add"
-                onClick={(handleAdd)} />
+                    type="submit"
+                    title="Add"
+                    onPress={() => handleAdd(stops, textInput)} 
+                />
 
                     < DestinationList stops={stops} setStops={setStops} tripLength={tripLength}/>
         </View>
@@ -52,6 +53,6 @@ const DestinationDetails = (({stops, setStops, tripLength, setTripLength})=>{
         
         </View>
     )
-})
+}
 
 export default DestinationDetails

@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, {useState} from "react";
-import {View, Text, StyleSheet, CheckBox} from "react-native"
+import {View, Text, TextInput, CheckBox} from "react-native"
 import reactDom from "react-dom";
 
 const FormPage2 = (( {checkedList, setCheckedList})=>{
@@ -24,6 +24,7 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
  
     if (isChecked) {
       setCheckedList([...checkedList, value]);
+      console.log(checkedList)
     } else {
       //Remove unchecked item from checkList
       const filteredList = checkedList.filter((item) => item !== value);
@@ -33,19 +34,21 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
   };
     return (
         <View>
+          <Text>
             {
             preferences.map((item, index) => {
                 return (
-                    <div key={item.id}>
+                    <View key={item.id}>
                     <input
                     type ="checkbox"
                     value ={item.value}
                     onChange={handleSelect}/>
-                    <label>{item.value}</label>
-                    </div>
+                    <Text>{item.value}</Text>
+                    </View>
                     )
             })
             }
+          </Text>
         </View>
   
 

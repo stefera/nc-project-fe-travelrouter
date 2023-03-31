@@ -1,4 +1,4 @@
-import { View, Text, Butt, FlatList } from "react-native"
+import { View, Text, Button, StyleSheet } from "react-native"
 import React, {useState} from "react";
 
 const DestinationList = (( {stops, setStops, tripLength} )=>{
@@ -12,25 +12,35 @@ const DestinationList = (( {stops, setStops, tripLength} )=>{
     return (
         <View>
             <Text>Your {tripLength} day trip destinations:</Text>
-                <FlatList>
-
+        <Text>  
                 {
                 stops.map((stop, index) => {
                     return (
-                            <li key={index}>
+                        <View key={index}>
                                 <Text>{stop}</Text>
                                 <Button 
                                 title="Remove"
-                                onClick={() => handleDelete(index)} />
-                            </li>
+                                onPress={() => handleDelete(index)} />
+
+                        </View>
 
                             )
                     })
                 }
 
-                </FlatList> 
+        </Text>
+
         </View>
     )
+})
+
+const styles = StyleSheet.create({
+    container: {
+
+    }
+
+    
+
 })
 
 export default DestinationList
