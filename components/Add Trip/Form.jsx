@@ -26,6 +26,9 @@ const Form = (()=>{
     const [checkedList, setCheckedList] = useState([])
     const [activities,setActivities] =useState([])
 
+    const [originObj, setOriginObj] = useState();
+    const [destinationObj, setDestinationObj] = useState();
+
     const formTitles = ["Destination Details", "Preferences", "Activities"]
     const subtitles = ["Input your holiday details below", "Let us know what you're interested in on this holiday", "Modify and save your itenarary below"]
 
@@ -56,7 +59,8 @@ const Form = (()=>{
         } else if (page === 1) {
             return <FormPage2 checkedList={checkedList} setCheckedList={setCheckedList}/>
         } else if (page === 2) {
-            return <FormPage3 destination={destination} origin={origin} checkedList={checkedList} activities= {activities} setActivities={setActivities}/>
+            return <FormPage3  originObj={originObj} setOriginObj={setOriginObj} 
+            destinationObj={destinationObj} setDestinationObj={setDestinationObj} destination={destination} origin={origin} checkedList={checkedList} activities= {activities} setActivities={setActivities}/>
         }
     }
 
