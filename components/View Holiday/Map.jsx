@@ -1,3 +1,12 @@
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
+
+const Map = () => {
+  return <Text>Map Component</Text>;
+};
+
+export default Map;
+
 // import React from 'react';
 // import MapView, {Marker} from 'react-native-maps';
 // import { StyleSheet, View } from 'react-native';
@@ -9,7 +18,6 @@
 // const brighton = { latitude: 50.8, longitude: 0.1 };
 // const edinburgh = { latitude: 55.9, longitude: -3.1 };
 // const cardiff  = { latitude: 51.4, longitude: 3.1 };
-
 
 // const Map = () => {
 
@@ -94,7 +102,7 @@
 //           ],
 //         },
 //       }
-      
+
 //       const markers = [
 //           { coordinate: london, title: "London" },
 //           { coordinate: manchester, title: "Manchester" },
@@ -107,7 +115,6 @@
 //           { coordinate: cardiff, title: "Cardiff" },
 //       ];
 
-
 //   return (
 //     <MapView style={{ flex: 1 }} >
 //         {markers.map((marker, index) => (
@@ -118,26 +125,20 @@
 //             image={require("../../assets/beachflag.png")}
 //           />
 //         ))}
-    
+
 //         {activityMarkers.map((activity, index) => {
 //           <Marker
 //             key={index}
 //             coordinate={activity.coordinate}
 //             title={activity.title}
-//             /> 
+//             />
 //          })}
 //       </MapView>
-
 
 //   );
 // }
 
 // export default Map;
-
-
-
-
-
 
 // const styles = StyleSheet.create({
 //   container: {
