@@ -12,6 +12,22 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 30,
   },
+  containerThree: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+
+  preferenceHolder: {
+    width: "31%",
+    alignItems: "center",
+    marginBottom: 10,
+    backgroundColor: "#eee",
+    padding: 10,
+  },
+
   dashboard: {
     justifyContent: "center",
     paddingTop: 50,
