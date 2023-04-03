@@ -69,8 +69,9 @@ const FormPage3 = ({
     <View>
       <Text> Activities from chat gpt here </Text>
       <Button onPress={handlePress}> Generate Itinerary</Button>
-
-      <Button onPress={handlePressFinal}> GeoCode</Button>
+      <Text> State: Origin:{origin} Obj:{originObj}</Text>
+      <Text> State: Destination: {destination} Obj:{destinationObj}</Text>
+      <Button onPress={handlePressFinal}> GeoCode and Send</Button>
     </View>
   );
 };
