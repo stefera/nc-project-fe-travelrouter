@@ -5,34 +5,43 @@ import ViewHoliday from "../View Holiday/ViewHoliday";
 import { ScrollView, View, Text, ImageBackground } from "react-native";
 import { Button, Icon } from "@rneui/themed";
 import { React, useState } from "react";
+import { useEffect } from "react";
+import {fetchAllHolidays} from "../../utilis"; 
 
 const Homepage = ({ user, styles }) => {
   const [listOfHolidays, setListOfHolidays] = useState([]);
+  const [view, setView] = useState(0)
+  const [viewHolidayId, setViewHolidayId]= useState("")
+
+  useEffect(()=>{
+    fetch
+  },[])
+
   const testLocations = [
     [
       {
-        id: 1,
+        id: "1",
         destination: "Bali",
         startDate: "24th April, 2023",
         coordinates: { lat: 53.4744196, lng: -2.2408512 },
         attendees: 3,
       },
       {
-        id: 2,
+        id: "2",
         destination: "Impossible Manchester",
         startDate: "24th April, 2023",
         coordinates: { lat: 53.4780445, lng: -2.248477 },
         attendees: 4,
       },
       {
-        id: 3,
+        id: "3",
 
         destination: "The Alchemist",
         startDate: "24th April, 2023",
         coordinates: { lat: 53.4801988, lng: -2.2398574 },
       },
       {
-        id: 4,
+        id: "4",
 
         destination: "Albert's Schloss",
         startDate: "27 Peter St, Manchester M2 5QR, United Kingdom",
@@ -40,7 +49,7 @@ const Homepage = ({ user, styles }) => {
         attendees: 6,
       },
       {
-        id: 5,
+        id: "5",
 
         destination: "The Milton Club",
         startDate: "24th April, 2023",
