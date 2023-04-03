@@ -7,7 +7,7 @@ import FormPage1 from "./FormPage1";
 import FormPage2 from "./FormPage2";
 import FormPage3 from "./FormPage3";
 
-const Form = (()=>{
+const Form = (({isLoading, setIsLoading, user})=>{
 
     const [page, setPage] = useState(0)
     const [stops, setStops] = useState([])
@@ -26,8 +26,8 @@ const Form = (()=>{
     const [checkedList, setCheckedList] = useState([])
     const [activities,setActivities] =useState([])
 
-    const [originObj, setOriginObj] = useState();
-    const [destinationObj, setDestinationObj] = useState();
+    const [originObj, setOriginObj] = useState({});
+    const [destinationObj, setDestinationObj] = useState({});
 
     const formTitles = ["Destination Details", "Preferences", "Activities"]
     const subtitles = ["Input your holiday details below", "Let us know what you're interested in on this holiday", "Modify and save your itenarary below"]
@@ -59,8 +59,7 @@ const Form = (()=>{
         } else if (page === 1) {
             return <FormPage2 checkedList={checkedList} setCheckedList={setCheckedList}/>
         } else if (page === 2) {
-            return <FormPage3  originObj={originObj} setOriginObj={setOriginObj} 
-            destinationObj={destinationObj} setDestinationObj={setDestinationObj} destination={destination} origin={origin} checkedList={checkedList} activities= {activities} setActivities={setActivities}/>
+            return <FormPage3  originObj={originObj} setOriginObj={setOriginObj} destinationObj={destinationObj} setDestinationObj={setDestinationObj} destination={destination} origin={origin} checkedList={checkedList} activities= {activities} setActivities={setActivities} isLoading={isLoading} setIsLoading={setIsLoading} user={user} arrivalDate={arrivalDate} departureDate={departureDate}/>
         }
     }
 
@@ -68,7 +67,7 @@ const Form = (()=>{
         <View className="form">
             {/* <View className="progress-bar" style={{width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%"}}>
                    <Text>add progress bar css here</Text>
-            </View>         */}
+            </View>         */} 
                 <View>
   <Text style={styles.h3Margin}>{formTitles[page]}</Text>
   <Text style={styles.smallMargin}>

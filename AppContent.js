@@ -24,7 +24,9 @@ export default function AppContent({ styles }) {
     return <Homepage styles={styles} user={user} />;
   };
   const AddTripScreen = () => {
-    return <AddTrip />;
+    return (
+      <AddTrip user={user} isLoading={isLoading} setIsLoading={setIsLoading} />
+    );
   };
   const MoreScreen = () => {
     return <ViewHoliday />;
