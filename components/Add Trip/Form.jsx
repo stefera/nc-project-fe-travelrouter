@@ -71,7 +71,7 @@ const Form = (({isLoading, setIsLoading, user})=>{
 
 
     }
-  };
+
 
   return (
     <View className="form">
@@ -107,7 +107,7 @@ const Form = (({isLoading, setIsLoading, user})=>{
                         </View>    
         </View>
         )
-})
+    });
 
 
 export default Form;
