@@ -61,3 +61,13 @@ export const postTrip = (params) => {
 //     })
 //     .catch((error) => console.log(error));
 // };
+
+export const fetchAllHolidays = () => {
+  return db
+    .get("/api/trips")
+    .then(({ data }) => {
+      console.log(data.trips, "data");
+      return data.trips;
+    })
+    .catch((error) => console.log(error));
+};
