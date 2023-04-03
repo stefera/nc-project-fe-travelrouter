@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const db = axios.create({ baseURL: "http://localhost:8989/" });
- 
+
 export const fetchActivites = (params) => {
   console.log("here");
   return (
@@ -21,7 +21,7 @@ export const fetchActivites = (params) => {
 };
 
 export const geoCodeLocations = (params) => {
-  console.log("here");
+  console.log("here in utils", params);
   return db
     .get("/api/trips/geoCodeActivities", { params: params })
     .then(({ data }) => {
@@ -29,6 +29,24 @@ export const geoCodeLocations = (params) => {
       return data.geoCodedLocations;
     })
     .catch((error) => console.log(error));
+};
+
+export const postTrip = (params) => {
+  console.log("here, posttrip");
+  return (
+    db
+      .post("/api/trips/", {
+        params: params,
+      })
+      //db.get("/api/trips/trip1/makePreferences")
+      .then(({ data }) => {
+        console.log(data, "data in postTrip");
+        return data;
+
+        // return data.activities;
+      })
+      .catch((error) => console.log(error))
+  );
 };
 
 // export const geoCodeStops = (params) => {
