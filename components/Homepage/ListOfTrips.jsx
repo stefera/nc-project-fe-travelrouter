@@ -7,15 +7,22 @@ import { List} from "react-native-paper";
 import styles from "../../App-stylesheet";
 
 
-const ListOfTrips = (({listOfHolidays})=>{
-    console.log (listOfHolidays[0])
+const ListOfTrips = (({testLocations,listOfHolidays, setView, view, viewHolidayId, setViewHolidayId})=>{
+
     return (<View 
     style={styles.container}
     >
         <Text style={styles.h4}>Your trips</Text>   
         <ScrollView horizontal = {true}>{
-        listOfHolidays[0].map((selectedHoliday)=>{
-            return <TripCard key={selectedHoliday.id} holiday={selectedHoliday}/>
+        testLocations.map((selectedHoliday)=>{
+            return <TripCard 
+            key={selectedHoliday.id} 
+            holiday={selectedHoliday} 
+            setView={setView} 
+            view={view}
+            viewHolidayId={viewHolidayId}
+            setViewHolidayId={setViewHolidayId}
+            />
         })}
         </ScrollView>
         

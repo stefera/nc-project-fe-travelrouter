@@ -71,6 +71,8 @@ const Form = (({isLoading, setIsLoading, user})=>{
 
 
     }
+    
+
 
 
   return (
@@ -107,6 +109,8 @@ const Form = (({isLoading, setIsLoading, user})=>{
                         </View>    
         </View>
         )
+     
+
     });
 
 
