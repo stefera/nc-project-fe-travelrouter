@@ -4,8 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Polyline } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
-import { config } from "dotenv";
-config()
+// import { config } from "dotenv";
+// config()
 
 const Map = () => {
 
@@ -77,21 +77,11 @@ const Map = () => {
             /> 
             )
          })}
-<Polyline
-    coordinates={[
-      {latitude: 51, longitude: -0},
-      {latitude: 53, longitude: -2},
-    ]}
-    strokeColor="#000" 
-    
-    strokeWidth={2}
-  /> 
 
-  
-    
+
 <MapViewDirections
-  origin={{latitude: 51.507, longitude: 0.1278}}
-  destination={{latitude: 48.85, longitude: 2.35}}
+  origin={{latitude: 53.954, longitude: -1.4}}
+  destination={{latitude: 50.5, longitude: -4}}
   apikey={"placeholder"}
   strokeWidth={3}
   strokeColor="red"
