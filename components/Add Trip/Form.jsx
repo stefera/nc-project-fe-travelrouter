@@ -72,7 +72,10 @@ const Form = (({isLoading, setIsLoading, user})=>{
 
     }
     
-    return (
+
+
+
+  return (
     <View className="form">
       {/* <View className="progress-bar" style={{width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%"}}>
                    <Text>add progress bar css here</Text>
@@ -106,8 +109,9 @@ const Form = (({isLoading, setIsLoading, user})=>{
                         </View>    
         </View>
         )
-      })
+     
 
+    });
 
 
 export default Form;
