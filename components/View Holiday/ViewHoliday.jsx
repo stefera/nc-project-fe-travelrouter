@@ -1,15 +1,15 @@
 
-import Map from "./Map";
+// import Map from "./Map";
 
 
-const ViewHoliday = (() => {
+// const ViewHoliday = (() => {
 
-    return(
-        <Map />
-    )
+//     return(
+//         <Map />
+//     )
 
     
-})
+// })
 
 
-export default ViewHoliday;
+// export default ViewHoliday;
