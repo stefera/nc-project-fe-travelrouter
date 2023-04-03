@@ -5,6 +5,10 @@ import { View, Text, StyleSheet } from "react-native";
 // import { Header } from "@react-navigation/native";
 
 const ViewHoliday = ({ listOfHolidays }) => {
+
+const [holiday, setHoliday] = useSate()
+  
+
   return (
     <View>
       <Text> View Holiday Comp </Text>
