@@ -71,7 +71,7 @@ const FormPage3 = ({
       <Button onPress={handlePress}> Generate Itinerary</Button>
       <Text> State: Origin:{origin} Obj:{originObj}</Text>
       <Text> State: Destination: {destination} Obj:{destinationObj}</Text>
-      <Button onPress={handlePressFinal}> GeoCode</Button>
+      <Button onPress={handlePressFinal}> GeoCode and Send</Button>
     </View>
   );
 };
