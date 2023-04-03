@@ -8,16 +8,25 @@ import { React, useState } from "react";
 import { useEffect } from "react";
 import {fetchAllHolidays} from "../../utilis"; 
 
-const Homepage = ({ user, styles }) => {
-  const [listOfHolidays, setListOfHolidays] = useState([]);
+const Homepage = ({ user, styles, isLoading, setIsLoading }) => {
+  const [listOfHolidays, setListOfHolidays] = useState(testLocations);
   const [view, setView] = useState(0)
   const [viewHolidayId, setViewHolidayId]= useState("")
 
-  useEffect(()=>{
-    fetch
-  },[])
+  useEffect(() => {
+  //   async function fetchData() {
+  //     // setIsLoading(true)
+  //     const data = await fetchAllHolidays();
+  //     setListOfHolidays(data);
+  //     console.log(data)
+  //     // setIsLoading(false)
+  //   }
+  //   fetchData();
+fetchAllHolidays().then((result)=>{setListOfHolidays(result)})
+  
+}, []);
 
-  const testLocations = [
+  const testLocations =
     [
       {
         id: "1",
@@ -76,10 +85,12 @@ const Homepage = ({ user, styles }) => {
       //   address: '20, House of Fraser, King St W, Manchester M3 2GQ, United Kingdom',
       //   coordinates: { lat: 53.4818756, lng: -2.2478721 }
       // }
-    ],
+   
   ];
-  return (
-    <View style={styles.topContainer}>
+
+  const Page0 = (()=>{
+    return (
+  <View style={styles.topContainer}>
       <ImageBackground
         source={require("./blob-scatter.png")}
         imageStyle={styles.backgroundImgHome}
@@ -90,12 +101,31 @@ const Homepage = ({ user, styles }) => {
             styles={styles}
             listOfHolidays={testLocations}
           />
-          <ListOfTrips listOfHolidays={testLocations} />
-          {/* < SocialFeed /> */}
-          <ViewHoliday listOfHolidays={testLocations} />
-        </ScrollView>
+          <ListOfTrips 
+          listOfHolidays={listOfHolidays} 
+          testLocations={testLocations}
+          setView={setView} 
+            
+          view={view}
+            viewHolidayId={viewHolidayId}
+            setViewHolidayId={setViewHolidayId} />
+      </ScrollView>
       </ImageBackground>
-    </View>
+    </View>)})
+
+const Page1 = (()=>{
+  return (
+<View style={styles.topContainer}>
+    
+      <ScrollView>
+        <ViewHoliday viewHolidayId={viewHolidayId} setViewHolidayId={setViewHolidayId} view={view} setView={setView}/>
+          </ScrollView>
+
+  </View>)})
+
+    
+  return ( view === 0? <Page0 /> : <Page1 />
+    
   );
 };
 

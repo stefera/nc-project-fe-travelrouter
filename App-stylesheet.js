@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   itemStyleHorizontal: {
-    height: 250 - 450,
-    maxWidth: 255,
+    height: 400 - 450,
+    width: 200 - 255,
     padding: 30,
     margin: 10,
     shadowColor: "#D3D3D3",
