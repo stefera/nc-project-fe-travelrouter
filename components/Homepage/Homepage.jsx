@@ -8,25 +8,12 @@ import { React, useState, useEffect } from "react";
 import { fetchAllHolidays } from "../../utilis";
 
 const Homepage = ({ user, styles, isLoading, setIsLoading }) => {
-  const [listOfHolidays, setListOfHolidays] = useState(testLocations);
   const [view, setView] = useState(0);
-  const [viewHolidayId, setViewHolidayId] = useState("");
+  const [viewHolidayId, setViewHolidayId] = useState(""); //go fetch
 
   //render page 0 when viewHolidayId != ""
 
-  useEffect(() => {
-    //   async function fetchData() {
-    //     // setIsLoading(true)
-    //     const data = await fetchAllHolidays();
-    //     setListOfHolidays(data);
-    //     console.log(data)
-    //     // setIsLoading(false)
-    //   }
-    //   fetchData();
-    fetchAllHolidays().then((result) => {
-      setListOfHolidays(result);
-    });
-  }, []);
+  // stringify then parse.
 
   const testLocations = [
     {
@@ -96,13 +83,8 @@ const Homepage = ({ user, styles, isLoading, setIsLoading }) => {
           imageStyle={styles.backgroundImgHome}
         >
           <ScrollView>
-            <Dashboard
-              user={user}
-              styles={styles}
-              listOfHolidays={listOfHolidays}
-            />
+            <Dashboard user={user} styles={styles} />
             <ListOfTrips
-              listOfHolidays={listOfHolidays}
               testLocations={testLocations}
               setView={setView}
               view={view}
