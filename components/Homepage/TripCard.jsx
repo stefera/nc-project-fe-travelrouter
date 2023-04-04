@@ -35,12 +35,14 @@ const TripCard = ({
         <ListItem.Title>
           <Text>{destination}</Text>
         </ListItem.Title>
-        <ListItem.Title>
-          <Text>{startDate}</Text>
-        </ListItem.Title>
-        {/* <ListItem.Subtitle>
-          <Text style={styles.small}>{startDate}</Text>
-        </ListItem.Subtitle> */}
+        <ListItem.Subtitle>
+          <Text style={styles.small}>
+            Trip begins: {startDate.substring(0, 10)}
+          </Text>
+        </ListItem.Subtitle>
+        <ListItem.Subtitle>
+          <Text style={styles.small}>{preferences}</Text>
+        </ListItem.Subtitle>
         {/* <ListItem.Subtitle>
           {" "}
           <Icon color="#ABABAB" name="person" size={25} type="material" />
