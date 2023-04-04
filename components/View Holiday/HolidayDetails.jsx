@@ -4,9 +4,6 @@ import HolidayActivities from "./HolidayActivities";
 
 const HolidayDetails = () => {
 
-
-  
-
   const tripData = [
     {
       title: "trip1",
