@@ -82,12 +82,14 @@ const Map = () => {
             /> 
             )
          })}
-<MapViewDirections
+{/* <MapViewDirections
   origin={{latitude: 53.954, longitude: -1.4}}
   destination={{latitude: 50.5, longitude: -4}}
   strokeWidth={3}
+  apikey="AIzaSyDtNZxvU7VJCbdoiM6ZvlhHJM0wLAkbbdk"
+
   strokeColor="#FF0000"
-/>
+/> */}
 
 </MapView>
   );
