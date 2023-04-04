@@ -1,5 +1,5 @@
 import HolidayDetails from "./HolidayDetails";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { View, Text, StyleSheet, Button } from "react-native";
 import { fetchTripById } from "../../utilis";
@@ -56,7 +56,7 @@ const ViewHoliday = ({ viewHolidayId, setViewHolidayId, setView }) => {
     <View style={styles.topContainer}>
       <Text> View Holiday Comp </Text>
 
-      <ViewMap>Map Comp</ViewMap>
+      {/* <Map>Map Comp</Map> */}
       <HolidayDetails tripData={tripData}>Hol Details Comp</HolidayDetails>
       <Button
         title="Back"

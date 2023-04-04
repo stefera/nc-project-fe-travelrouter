@@ -42,6 +42,7 @@ const ListOfTrips = ({ setView, view, viewHolidayId, setViewHolidayId }) => {
             return (
               <TripCard
                 key={selectedHoliday._id}
+                id={selectedHoliday._id}
                 destination={selectedHoliday.destination}
                 startDate={selectedHoliday.startDate}
                 preferences={selectedHoliday.preferences}

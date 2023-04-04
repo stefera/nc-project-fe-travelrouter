@@ -8,6 +8,7 @@ import styles from "../../App-stylesheet";
 import { Icon } from "@rneui/themed";
 
 const TripCard = ({
+  id,
   destination,
   startDate,
   preferences,
@@ -16,9 +17,9 @@ const TripCard = ({
   setViewHolidayId,
   viewHolidayId,
 }) => {
-  const handlePress = (key) => {
-    console.log(key);
-    setViewHolidayId(key);
+  const handlePress = (id) => {
+    console.log(id);
+    setViewHolidayId(id);
     setView(1);
     //console.log(view, viewHolidayId);
   };
@@ -28,7 +29,7 @@ const TripCard = ({
       Component={TouchableHighlight}
       containerStyle={styles.itemStyleHorizontal}
       onPress={(event) => {
-        handlePress(key);
+        handlePress(id);
       }}
     >
       <ListItem.Content>
