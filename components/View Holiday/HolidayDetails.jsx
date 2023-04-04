@@ -5,6 +5,7 @@ import HolidayActivities from "./HolidayActivities";
 const HolidayDetails = () => {
 
 
+  
 
   const tripData = [
     {
@@ -42,14 +43,13 @@ const HolidayDetails = () => {
   ];
 
   return (
-    <View styles={styles.container}>
-      <Text styles={styles.text}> Holiday Details Comp</Text>
-      <Text>You are travelling from: {tripData[0].startLocation.city}</Text>
-      <Text>to {tripData[0].destination.city}</Text>
-      <Text>on the{tripData[0].destination.arrivalDate}</Text>
-      <Text> until the {tripData[0].destination.departureDate}</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}> Your Upcoming Trip!</Text>
+      <Text>You are travelling from: <Text style={styles.bold}>{tripData[0].startLocation.city}</Text></Text>
+      <Text>to  <Text style={styles.bold}>{tripData[0].destination.city}</Text></Text>
+      <Text>on the <Text style={styles.bold}>{tripData[0].destination.arrivalDate}</Text></Text>
+      <Text> until the <Text style={styles.bold}>{tripData[0].destination.departureDate}</Text></Text>
 
-      <HolidayActivities />
     </View>
   );
 };
@@ -66,6 +66,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 10,
   },
+  bold: {
+    fontWeight: "bold",
+  }
 });
 
 export default HolidayDetails;
