@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const db = axios.create({ baseURL: "http://localhost:8989/" });
+const db = axios.create({ baseURL: "http://localhost:8999/" });
 
 export const fetchActivites = (params) => {
   console.log("here");
@@ -21,9 +21,10 @@ export const fetchActivites = (params) => {
 };
 
 export const geoCodeLocations = (params) => {
-  console.log("here in utils", params);
+  const cities = params;
+  console.log (cities);
   return db
-    .get("/api/trips/geoCodeActivities", { params: params })
+    .get("/api/trips/geoCodeActivities", { params: cities })
     .then(({ data }) => {
       console.log(data.geoCodedLocations, "final cities");
       return data.geoCodedLocations;
