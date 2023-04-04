@@ -62,7 +62,7 @@ const FormPage1 = ({
                     placeholder={"Enter Destination City"}/>
 
                <Text style={styles.inputHeaderMargin}>Arrival Date</Text>
-               {/* <DateTimePicker style={styles.dateTimePicker}
+               <DateTimePicker style={styles.dateTimePicker}
                     minimumDate={new Date()}
                     value={arrivalDate? arrivalDate:arrivalDateInput} 
                     onChange={(event, date) => {
@@ -75,14 +75,14 @@ const FormPage1 = ({
                     
                     
                     // placeholder="Select Arrival Date"
-                /> */}
+                />
                 {/* <Button
                         type="submit"
                         title="Add"
                         onPress={() => setTripLength(numberInput)}
                 /> */}
-                {/* <Text style={styles.inputHeaderMargin}>Departure Date</Text> */}
-               {/* <DateTimePicker style={styles.dateTimePicker}
+                <Text style={styles.inputHeaderMargin}>Departure Date</Text>
+               <DateTimePicker style={styles.dateTimePicker}
                     minimumDate={arrivalDate? arrivalDate:arrivalDateInput?arrivalDateInput:new Date()}
                     value={departureDate? departureDate:departureDateInput} 
                     onChange= {(event, date) => {
@@ -91,7 +91,7 @@ const FormPage1 = ({
                             setDepartureDate(date)
                         }
                     }
-                    /> */}
+                    />
                {/* <Button 
                     type="submit"
                     title="Add"

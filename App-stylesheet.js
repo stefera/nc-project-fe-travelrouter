@@ -77,6 +77,10 @@ const styles = StyleSheet.create({
     height: null,
     resizeMode: "cover",
   },
+  animation: {
+    height: 100,
+    width: 100,
+  },
   h1: { fontSize: 35, fontWeight: 600 },
   h2: { fontSize: 28, fontWeight: 600 },
   h3: { fontSize: 20, fontWeight: 600, alignContent: "center" },

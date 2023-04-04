@@ -1,6 +1,8 @@
 import { Button } from "@rneui/themed";
 import { View, Text, FlatList } from "react-native";
 import { fetchActivites, geoCodeLocations, postTrip } from "../../utilis";
+import LottieView from "lottie-react-native";
+import styles from "../../App-stylesheet";
 import { useState } from "react";
 
 const FormPage3 = ({
@@ -19,6 +21,9 @@ const FormPage3 = ({
   arrivalDate,
   departureDate
 }) => {
+
+  const [animatedLoader, setAnimatedLoader]= useState(false)
+
   let destinationObj
   let originObj
   let activitiesGeo
@@ -106,13 +111,10 @@ const FormPage3 = ({
   //     });
   // };
 
-
-
   const handlePressFinal = async () => {
-  
-    try {
+      try {
       // Assuming isLoading is a function that returns a Promise
-      // await isLoading(true);
+      //await isLoading(true);
   
       const returnedCityObjs = await geoCodeLocations(cityLocations);
       console.log(returnedCityObjs, "returnedcities");
@@ -144,6 +146,7 @@ const FormPage3 = ({
         //   }
         // }),
       }};
+
       const response = await postTrip(TripObj);
       console.log(response, "after post Trip");
   } catch (error) {
@@ -157,8 +160,9 @@ const FormPage3 = ({
       <Text style={styles.body}>{name}</Text>
     </View>
   );
-  return (
-    <View>
+
+  const MainView = ()=>{
+    return (<View>
       <Text> Activities from chat gpt here </Text>
       <Button onPress={handlePress}> Generate Itinerary</Button>
       <Text> State: Origin:{origin} Obj:{!originObj?<Text/>:originObj.id}</Text>
@@ -166,6 +170,22 @@ const FormPage3 = ({
       <FlatList data={activities} renderItem={((item)=>{<Item item={item}/>})}/>
       <Button onPress={handlePressFinal}> GeoCode and Send</Button>
     </View>
+  )}
+
+  const LoadPage =()=>{
+    return (
+    <View>
+      <LottieView
+        source={require("./126076-comacon-planning.json")}
+        style={styles.animation}
+        autoPlay
+      />
+    </View>
+    )
+  }
+
+  return (animatedLoader? <LoadPage/>: <MainView/>
+    
   );
 };
 
