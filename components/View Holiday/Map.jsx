@@ -1,7 +1,6 @@
 import React from "react";
 import MapView, {Marker} from "react-native-maps";
 import { StyleSheet, View } from "react-native";
-import { useEffect, useState } from "react";
 import { Polyline } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions"
 
@@ -13,11 +12,16 @@ const Map = () => {
           author: "fergus",
           startLocation: {
             city: "nottingham",
-            coordinates: {              latitude: 53.954,              longitude: -1.4            },
+            coordinates: { 
+              latitude: 53.954,
+              longitude: -1.4
+            },
           },
           destination: {
             city: "manchester",
-            coordinates: {              latitude: 50.5,              longitude: -4            },
+            coordinates: {
+              latitude: 50.5, 
+              longitude: -4 },
             arrivalDate: "2023-04-04",
             departureDate: "2023-04-08",
             activities: [

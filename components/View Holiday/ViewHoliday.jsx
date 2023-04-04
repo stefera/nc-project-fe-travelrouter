@@ -3,6 +3,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useState } from "react";
 import Header from "./Header";
+import Map from "./Map"
 // import { Header } from "@react-navigation/native";
 
 const ViewHoliday = ({ listOfHolidays }) => {
@@ -48,7 +49,7 @@ const ViewHoliday = ({ listOfHolidays }) => {
       <Header />
       <Text> View holiday </Text>
 
-      <Text> Map component here</Text>
+      <Map /> 
 
       <HolidayDetails listOfHolidays={listOfHolidays} />
     </View>
