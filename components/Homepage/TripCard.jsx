@@ -13,6 +13,7 @@ import { Icon } from "@rneui/themed";
 
 const TripCard = (({holiday})=>{
     console.log(holiday)
+    
     return (
         <ListItem Component={TouchableHighlight} containerStyle={styles.itemStyleHorizontal}>
         <ListItem.Content >

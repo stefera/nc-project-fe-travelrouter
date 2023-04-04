@@ -33,7 +33,7 @@ const Form = ({ isLoading, setIsLoading, user }) => {
   const subtitles = [
     "Input your holiday details below",
     "Let us know what you're interested in on this holiday",
-    "Modify and save your itenarary below",
+    "Generate, modify and save your itenarary below",
   ];
 
   const pageDisplay = () => {
@@ -124,6 +124,19 @@ const Form = ({ isLoading, setIsLoading, user }) => {
         >
           {" "}
           Next{" "}
+        </Button>
+        <Button
+          style={styles.primaryButton}
+          title={"Next Test"}
+          onPress={() => {
+            setPage(2)
+            setDestination("London");
+            setCheckedList(["Art","Sports","Food"])
+            
+          }}
+        >
+          
+          Set
         </Button>
       </View>
     </View>

@@ -5,6 +5,10 @@ const styles = StyleSheet.create({
   topContainer: {
     flex: 1,
   },
+  topContainerMargin: {
+    flex: 1,
+    margin: 10,
+  },
   container: {
     flex: 0.4,
     alignItems: "left",
@@ -16,6 +20,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+  containerScroller: {
+    flexDirection: "column",
+    flexWrap: "nowrap",
     paddingHorizontal: 10,
     paddingTop: 10,
   },
@@ -49,6 +59,18 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0.3, height: 0.3 },
   },
 
+  halfPageContainerLeft: {
+    padding: 10,
+    width: "50%",
+    alignItems: "left",
+  },
+
+  halfPageContainerRight: {
+    padding: 10,
+    width: "50%",
+    alignItems: "right",
+  },
+
   wrapperHorizontal: {
     height: 54,
     justifyContent: "center",
@@ -70,6 +92,21 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
   },
+  itemStyleHorizontalFull: {
+    height: 80,
+    width: "80%",
+    padding: 30,
+    margin: 10,
+    shadowColor: "#D3D3D3",
+    shadowOpacity: 0.5,
+    shadowRadius: 0.1,
+    shadowOffset: { width: 0.5, height: 0.8 },
+    borderRadius: 10,
+    borderWidth: 0.2,
+    textAlign: "center",
+    justifyContent: "center",
+  },
+
   backgroundImgHome: {
     opacity: 0.2,
     flex: 1,
@@ -101,6 +138,15 @@ const styles = StyleSheet.create({
 
   inputHeader: { fontSize: 14, fontWeight: 600 },
   inputHeaderMargin: { fontSize: 14, fontWeight: 600, marginLeft: 10 },
+  inputHeaderPage3: {
+    fontSize: 14,
+    fontWeight: 600,
+    alignSelf: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    margin: 10,
+    marginVertical: 20,
+  },
 
   dateTimePicker: { marginLeft: 10, marginVertical: 10 },
 
@@ -115,7 +161,20 @@ const styles = StyleSheet.create({
   },
 
   primaryButton: {
-    backgroundColor: "#ff000",
+    alignSelf: "center",
+    justifyContent: "center",
+    minHeight: 50,
+    maxWidth: "80%",
+    borderWidth: 0,
+    borderRadius: 15,
+  },
+
+  primaryButtonContainer: {
+    marginHorizontal: 50,
+    height: 65,
+    marginVertical: 10,
+    width: "80%",
+    borderWidth: 0,
   },
 
   // preferenceCard: {

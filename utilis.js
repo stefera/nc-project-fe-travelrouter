@@ -22,7 +22,7 @@ export const fetchActivites = (params) => {
 
 export const geoCodeLocations = (params) => {
   const cities = params;
-  console.log (cities);
+  console.log(cities);
   return db
     .get("/api/trips/geoCodeActivities", { params: cities })
     .then(({ data }) => {
