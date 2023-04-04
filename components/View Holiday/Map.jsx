@@ -4,26 +4,23 @@ import MapViewDirections from "react-native-maps-directions"
 
 
 
-
-
 const Map = () => {
 
-      const tripData = [
-        {
-          title: "trip1",
-          author: "fergus",
-          startLocation: {
-            city: "nottingham",
-            coordinates: { 
-              latitude: 53.954,
-              longitude: -1.4
-            },
+      const tripData = [{
+          title: "trip3",
+          author: "martin",
+          city: "london",
+          coordinates: {
+            latitude: 51.5072,
+            longitude: -0.1276,
           },
+          preferences: ["nightlife", "food"],
           destination: {
             city: "manchester",
             coordinates: {
-              latitude: 50.5, 
-              longitude: -4 },
+              latitude: 53.4808,
+              longitude: -2.2426,
+            },
             arrivalDate: "2023-04-04",
             departureDate: "2023-04-08",
             activities: [
@@ -35,10 +32,9 @@ const Map = () => {
                   longitude: -2.2253,
                 },
               },
-
               {
                 name: "Hidden at Downtex Mill",
-                address: "Mayfield Train Station, The Depot, Manchester M1 2QF", 
+                address: "Mayfield Train Station, The Depot, Manchester M1 2QF",
                 coordinates: {
                   latitude: 53.4756,
                   longitude: -2.2253,
@@ -46,9 +42,8 @@ const Map = () => {
               },
             ],
           },
-        },
-      ];
-
+        }]
+      
 
   return (
     <MapView
@@ -59,7 +54,7 @@ const Map = () => {
          return (
            <Marker
              key={index}
-             coordinate={item.startLocation.coordinates}
+             coordinate={item.coordinates}
              title="Test marker start location"
              />
          )
@@ -85,14 +80,18 @@ const Map = () => {
             /> 
             )
          })}
-<MapViewDirections
-  origin={{latitude: 53.954, longitude: -1.4}}
-  destination={{latitude: 50.5, longitude: -4}}
-  strokeWidth={3}
-  apikey=""
 
-  strokeColor="#FF0000"
-/>
+        {tripData.map((location) => {
+            <MapViewDirections
+             origin={location.coordinates}
+             destination={location.destination.coordinates}
+             strokeWidth={3}
+             apikey=""
+             strokeColor="#FF0000"
+          />
+
+        })}
+
 
 </MapView>
   );
