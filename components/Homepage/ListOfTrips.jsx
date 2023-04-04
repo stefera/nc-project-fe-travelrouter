@@ -15,20 +15,23 @@ const ListOfTrips = ({
   setViewHolidayId,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [listOfHols, setListOfHols] = useState("");
 
-  let listOfHolidays = [];
-  // c n p into dash
   useEffect(() => {
     fetchAllHolidays().then((data) => {
       //console.log(data.trips, "<< useEffect Homepage");
-      console.log(data, "<<data in fetchallhols");
-      listOfHolidays = data.trips;
-      console.log(listOfHolidays, "<< listOfHols ln31");
+
+      //listOfHolidays = Array.from(data.trips);
+      setListOfHols(data);
+
+      //listOfHolidays = Object.values(JSON.parse(data.trips));
+
+      console.log(listOfHols, "<< listOfHols ln31");
       setIsLoading(false);
     });
   }, [view, isLoading]);
 
-  console.log(listOfHolidays, "<< listOfHols ln 35");
+  console.log(listOfHols.trips, "<< listOfHols ln 35");
 
   if (isLoading) {
     return (
@@ -41,11 +44,13 @@ const ListOfTrips = ({
       <View style={styles.container}>
         <Text style={styles.h4}>Your trips</Text>
         <ScrollView horizontal={true}>
-          {listOfHolidays.map((selectedHoliday) => {
+          {listOfHols.trips.map((selectedHoliday) => {
             return (
               <TripCard
                 key={selectedHoliday._id}
-                holiday={selectedHoliday}
+                destination={selectedHoliday.destination}
+                startDate={selectedHoliday.startDate}
+                preferences={selectedHoliday.preferences}
                 setView={setView}
                 view={view}
                 viewHolidayId={viewHolidayId}
