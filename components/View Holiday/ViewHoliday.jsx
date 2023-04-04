@@ -1,15 +1,20 @@
+import ViewMap from "./Map";
+import HolidayDetails from "./HolidayDetails";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+// import { Header } from "@react-navigation/native";
 
-// import Map from "./Map";
+const ViewHoliday = ({ listOfHolidays }) => {
+  return (
+    <View>
+      <Text> View Holiday Comp </Text>
 
+      <ViewMap>Map Comp</ViewMap>
+      <HolidayDetails listOfHolidays={listOfHolidays}>
+        Hol Details Comp
+      </HolidayDetails>
+    </View>
+  );
+};
 
-// const ViewHoliday = (() => {
-
-//     return(
-//         <Map />
-//     )
-
-    
-// })
-
-
-// export default ViewHoliday;
+export default ViewHoliday;
