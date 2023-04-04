@@ -1,5 +1,8 @@
 import HolidayDetails from "./HolidayDetails";
 import React from "react";
+import { useState } from "react";
+import Header from "./Header";
+import Map from "./Map"
 
 import { View, Text, StyleSheet,Button } from "react-native";
 
@@ -46,6 +49,7 @@ const tripData = [
     <View style={styles.topContainer}>
       <Text> View Holiday Comp </Text>
 
+      <Map /> 
       <ViewMap>Map Comp</ViewMap>
       <HolidayDetails listOfHolidays={listOfHolidays}>
         Hol Details Comp
