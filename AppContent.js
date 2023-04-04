@@ -21,7 +21,14 @@ export default function AppContent({ styles }) {
 
   const Tab = createBottomTabNavigator();
   const HomeScreen = () => {
-    return <Homepage styles={styles} user={user} />;
+    return (
+      <Homepage
+        styles={styles}
+        user={user}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      />
+    );
   };
   const AddTripScreen = () => {
     return (

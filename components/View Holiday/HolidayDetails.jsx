@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import HolidayActivities from "./HolidayActivities";
 
-const HolidayDetails = ({ holidayData }) => {
+const HolidayDetails = () => {
+
 
   
 
@@ -48,6 +49,7 @@ const HolidayDetails = ({ holidayData }) => {
       <Text>to  <Text style={styles.bold}>{tripData[0].destination.city}</Text></Text>
       <Text>on the <Text style={styles.bold}>{tripData[0].destination.arrivalDate}</Text></Text>
       <Text> until the <Text style={styles.bold}>{tripData[0].destination.departureDate}</Text></Text>
+
     </View>
   );
 };
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignIHolidayDetailstems: "center",
     backgroundColor: "#F5FCFF",
   },
   text: {
