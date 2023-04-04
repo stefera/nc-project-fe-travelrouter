@@ -76,7 +76,7 @@ const Map = () => {
             coordinate={activity.coordinates}
             title={activity.name}
             image={require("../../assets/beachflag.png")}
-            /> 
+            /> git st
             )
          })}
 
