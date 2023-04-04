@@ -12,6 +12,22 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 30,
   },
+  containerThree: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+
+  preferenceHolder: {
+    width: "31%",
+    alignItems: "center",
+    marginBottom: 10,
+    backgroundColor: "#eee",
+    padding: 10,
+  },
+
   dashboard: {
     justifyContent: "center",
     paddingTop: 50,
@@ -63,10 +79,30 @@ const styles = StyleSheet.create({
   },
   h1: { fontSize: 35, fontWeight: 600 },
   h2: { fontSize: 28, fontWeight: 600 },
-  h3: { fontSize: 35, fontWeight: 600 },
+  h3: { fontSize: 20, fontWeight: 600, alignContent: "center" },
+  h3Margin: {
+    fontSize: 20,
+    fontWeight: 600,
+    marginLeft: 10,
+    marginTop: 20,
+    marginBottom: 5,
+  },
+
   h4: { fontSize: 14, fontWeight: 600 },
   body: { fontSize: 16, fontWeight: "normal" },
   small: { fontSize: 13, fontWeight: 300, color: "grey" },
+  smallMargin: {
+    fontSize: 13,
+    fontWeight: 300,
+    color: "grey",
+    marginLeft: 10,
+    marginBottom: 20,
+  },
+
+  inputHeader: { fontSize: 14, fontWeight: 600 },
+  inputHeaderMargin: { fontSize: 14, fontWeight: 600, marginLeft: 10 },
+
+  dateTimePicker: { marginLeft: 10, marginVertical: 10 },
 
   itemCard: {
     // boxShadow: 0,4,8,0,rgba(0,0,0,0.2),
@@ -78,6 +114,17 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
 
+  primaryButton: {
+    backgroundColor: "#ff000",
+  },
+
+  // preferenceCard: {
+  //   width: "33.33%",
+  //   aspectRatio: 1,
+  //   borderWidth: 1,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
   // .primaryButton{
   //   backgroundColor: #1143f8;
   //   color: white;

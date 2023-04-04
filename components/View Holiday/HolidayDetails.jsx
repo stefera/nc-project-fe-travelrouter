@@ -1,11 +1,10 @@
-import HolidayDetails from "./HolidayDetails";
-import React from "react";
+import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { useState } from "react";
-import Header from "./Header";
-// import { Header } from "@react-navigation/native";
+import HolidayActivities from "./HolidayActivities";
 
-const ViewHoliday = ({ listOfHolidays }) => {
+const HolidayDetails = () => {
+
+
 
   const tripData = [
     {
@@ -41,18 +40,32 @@ const ViewHoliday = ({ listOfHolidays }) => {
       },
     },
   ];
- 
 
   return (
-    <View>
-      <Header />
-      <Text> View holiday </Text>
+    <View styles={styles.container}>
+      <Text styles={styles.text}> Holiday Details Comp</Text>
+      <Text>You are travelling from: {tripData[0].startLocation.city}</Text>
+      <Text>to {tripData[0].destination.city}</Text>
+      <Text>on the{tripData[0].destination.arrivalDate}</Text>
+      <Text> until the {tripData[0].destination.departureDate}</Text>
 
-      <Text> Map component here</Text>
-
-      <HolidayDetails listOfHolidays={listOfHolidays} />
+      <HolidayActivities />
     </View>
   );
 };
 
-export default ViewHoliday;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignIHolidayDetailstems: "center",
+    backgroundColor: "#F5FCFF",
+  },
+  text: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+  },
+});
+
+export default HolidayDetails;

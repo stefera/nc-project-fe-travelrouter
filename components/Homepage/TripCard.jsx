@@ -7,6 +7,9 @@ import { List, Card } from "react-native-paper";
 import styles from "../../App-stylesheet";
 import { Icon } from "@rneui/themed";
 
+// handlePress (()=>{
+//     setViewHoliday ()
+// })
 
 const TripCard = (({holiday})=>{
     console.log(holiday)
