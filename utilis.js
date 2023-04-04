@@ -76,7 +76,6 @@ export const fetchTripById = (id) => {
   return db
     .get(path)
     .then(({ data }) => {
-      console.log(data.trip, "<< data.trip in fetchTripById");
       return data.trip;
     })
     .catch((error) => console.log(error));

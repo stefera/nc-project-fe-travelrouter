@@ -13,19 +13,11 @@ const ListOfTrips = ({ setView, view, viewHolidayId, setViewHolidayId }) => {
 
   useEffect(() => {
     fetchAllHolidays().then((data) => {
-      //console.log(data.trips, "<< useEffect Homepage");
-
-      //listOfHolidays = Array.from(data.trips);
       setListOfHols(data);
 
-      //listOfHolidays = Object.values(JSON.parse(data.trips));
-
-      console.log(listOfHols, "<< listOfHols ln31");
       setIsLoading(false);
     });
   }, [view, isLoading]);
-
-  console.log(listOfHols.trips, "<< listOfHols ln 35");
 
   if (isLoading) {
     return (
