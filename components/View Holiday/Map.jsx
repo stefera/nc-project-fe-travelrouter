@@ -4,8 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Polyline } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
-// import { config } from "dotenv";
-// config()
+
 
 const Map = () => {
 
@@ -46,7 +45,10 @@ const Map = () => {
        
       
   return (
-    <MapView style={{ height: "50%" }} >
+    <MapView 
+    style={{ height: "50%" }} 
+    provider="google"
+    >
 
       {tripData.map((item) => {
          return (
@@ -82,7 +84,7 @@ const Map = () => {
 <MapViewDirections
   origin={{latitude: 53.954, longitude: -1.4}}
   destination={{latitude: 50.5, longitude: -4}}
-  apikey={"placeholder"}
+  apikey="AIzaSyAmempctutvUvlzRVCezRsSCCXeeYISRgk"
   strokeWidth={3}
   strokeColor="red"
 />
