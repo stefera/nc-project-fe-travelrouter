@@ -1,8 +1,10 @@
 import React from "react";
 import MapView, {Marker} from "react-native-maps";
-import { StyleSheet, View } from "react-native";
-import { Polyline } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions"
+
+
+
+
 
 const Map = () => {
 
@@ -47,6 +49,7 @@ const Map = () => {
         },
       ];
 
+
   return (
     <MapView
     style={{ height: "50%" }}
@@ -82,14 +85,14 @@ const Map = () => {
             /> 
             )
          })}
-{/* <MapViewDirections
+<MapViewDirections
   origin={{latitude: 53.954, longitude: -1.4}}
   destination={{latitude: 50.5, longitude: -4}}
   strokeWidth={3}
-  apikey="AIzaSyDtNZxvU7VJCbdoiM6ZvlhHJM0wLAkbbdk"
+  apikey=""
 
   strokeColor="#FF0000"
-/> */}
+/>
 
 </MapView>
   );
