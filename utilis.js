@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const db = axios.create({ baseURL: "http://localhost:8989/" });
+const db = axios.create({ baseURL: "http://localhost:8999/" });
 
 export const fetchActivites = (params) => {
   console.log("here");
