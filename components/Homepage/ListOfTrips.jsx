@@ -13,8 +13,9 @@ const ListOfTrips = ({ setView, view, viewHolidayId, setViewHolidayId }) => {
 
   useEffect(() => {
     fetchAllHolidays().then((data) => {
-      setListOfHols(data);
-
+      console.log(data, "<< data LOT");
+      setListOfHols(data.trips);
+      console.log(listOfHols, "<< listOfHols   LOT");
       setIsLoading(false);
     });
   }, [view, isLoading]);
@@ -30,7 +31,7 @@ const ListOfTrips = ({ setView, view, viewHolidayId, setViewHolidayId }) => {
       <View style={styles.container}>
         <Text style={styles.h4}>Your trips</Text>
         <ScrollView horizontal={true}>
-          {listOfHols.trips.map((selectedHoliday) => {
+          {listOfHols.map((selectedHoliday) => {
             return (
               <TripCard
                 key={selectedHoliday._id}

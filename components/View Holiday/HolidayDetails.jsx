@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import HolidayActivities from "./HolidayActivities";
+import { fetchTripById } from "../../utilis";
 
-const HolidayDetails = ({viewHolidayId, view}) => {
+const HolidayDetails = ({ viewHolidayId, view }) => {
   const [tripData, setTripData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -10,6 +11,7 @@ const HolidayDetails = ({viewHolidayId, view}) => {
     fetchTripById(viewHolidayId).then((data) => {
       setTripData([data]);
 
+      console.log("tripData >> ", tripData);
       setIsLoading(false);
     });
   }, [view, isLoading]);
@@ -30,20 +32,22 @@ const HolidayDetails = ({viewHolidayId, view}) => {
         <Text style={styles.text}> Your Upcoming Trip!</Text>
         <Text>
           You are travelling from:{" "}
-          <Text style={styles.bold}>{tripData[0].startLocation.city}</Text>
+          <Text style={styles.bold}>{tripData[0].city}</Text>
         </Text>
         <Text>
           to <Text style={styles.bold}>{tripData[0].destination.city}</Text>
         </Text>
         <Text>
           on the{" "}
-          <Text style={styles.bold}>{tripData[0].destination.arrivalDate}</Text>
+          <Text style={styles.bold}>
+            {tripData[0].destination.arrivalDate.substring(0, 10)}
+          </Text>
         </Text>
         <Text>
           {" "}
           until the{" "}
           <Text style={styles.bold}>
-            {tripData[0].destination.departureDate}
+            {tripData[0].destination.departureDate.substring(0, 10)}
           </Text>
         </Text>
       </View>
