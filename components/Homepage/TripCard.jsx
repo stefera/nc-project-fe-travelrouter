@@ -7,14 +7,20 @@ import { List, Card } from "react-native-paper";
 import styles from "../../App-stylesheet";
 import { Icon } from "@rneui/themed";
 
-// handlePress (()=>{
-//     setViewHoliday ()
-// })
 
-const TripCard = (({holiday})=>{
-    console.log(holiday)
+const TripCard = (({holiday, view, setView, setViewHolidayId, viewHolidayId})=>{
+const holidayId = holiday.id
+
+    const handlePress = ((id)=>{
+        console.log(id)
+        setViewHolidayId(id)
+        setView(1)
+        console.log(view, viewHolidayId)
+    })
+
+
     return (
-        <ListItem Component={TouchableHighlight} containerStyle={styles.itemStyleHorizontal}>
+        <ListItem Component={TouchableHighlight} containerStyle={styles.itemStyleHorizontal} onPress={((event)=>{handlePress(holidayId)})}>
         <ListItem.Content >
             <ListItem.Title><Text>{holiday.destination}</Text></ListItem.Title>
             <ListItem.Subtitle><Text style={styles.small}>{holiday.startDate}</Text></ListItem.Subtitle>
