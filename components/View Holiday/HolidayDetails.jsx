@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import HolidayActivities from "./HolidayActivities";
 
-const HolidayDetails = ({ listOfHolidays }) => {
+const HolidayDetails = ({ holidayData }) => {
 
-
+  
 
   const tripData = [
     {
@@ -43,13 +43,11 @@ const HolidayDetails = ({ listOfHolidays }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Holiday Details Comp</Text>
+      <Text style={styles.text}> Your Upcoming Trip!</Text>
       <Text>You are travelling from: {tripData[0].startLocation.city}</Text>
       <Text>to {tripData[0].destination.city}</Text>
       <Text>on the{tripData[0].destination.arrivalDate}</Text>
       <Text> until the {tripData[0].destination.departureDate}</Text>
-
-      <HolidayActivities />
     </View>
   );
 };
