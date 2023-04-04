@@ -8,12 +8,12 @@ import { fetchTripById } from "../../utilis";
 import styles from "../../App-stylesheet";
 
 const ViewHoliday = ({ viewHolidayId, setViewHolidayId, view, setView }) => {
-  const [tripData, setTripData] = useState({});
+  const [tripData, setTripData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchTripById(viewHolidayId).then((data) => {
-      setTripData(data);
+      setTripData([data]);
 
       setIsLoading(false);
     });
