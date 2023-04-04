@@ -31,6 +31,7 @@ const FormPage3 = ({
 
   const handlePress = () => {
     // isLoading(true); // assuming isLoading is a function that returns a Promise
+    setAnimatedLoader(true)
     fetchActivites(requestObj)
       .then((returnedActivities) => {
         console.log(returnedActivities);
@@ -40,6 +41,8 @@ const FormPage3 = ({
       .then(() => {
         console.log("complete");
         console.log(activities, "activities");
+        setAnimatedLoader(false)
+
       })
       .catch((error) => {
         console.error(error);

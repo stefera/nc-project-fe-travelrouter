@@ -1,22 +1,21 @@
 import axios from "axios";
 
-const db = axios.create({ baseURL: "http://localhost:8989/" });
+const db = axios.create({ baseURL: "http://localhost:8999/" });
 
 export const fetchActivites = (params) => {
-  console.log("here");
+  console.log("here", params);
   return (
     db
-      .get("/api/trips/trip1/makePreferences", {
+      .get("api/trips/trip1/makePreferences", {
         params: params,
       })
       //db.get("/api/trips/trip1/makePreferences")
       .then(({ data }) => {
-        console.log(data, "data");
-        console.log(data.activities, "activities");
-
+        console.log(data, "data in utils");
+        console.log(data.activities, "activities in utils");
         return data.activities;
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error, error.message))
   );
 };
 
