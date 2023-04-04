@@ -85,7 +85,6 @@ const Homepage = ({ user, styles, isLoading, setIsLoading }) => {
           <ScrollView>
             <Dashboard user={user} styles={styles} />
             <ListOfTrips
-              testLocations={testLocations}
               setView={setView}
               view={view}
               viewHolidayId={viewHolidayId}

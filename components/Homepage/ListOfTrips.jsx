@@ -8,17 +8,39 @@ import styles from "../../App-stylesheet";
 import { fetchAllHolidays } from "../../utilis";
 
 const ListOfTrips = ({
-  testLocations,
   setView,
   view,
   viewHolidayId,
   setViewHolidayId,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [listOfHols, setListOfHols] = useState("");
+  const [listOfHols, setListOfHols] = useState([]);
+
+  const testLocations = [
+    {
+      _id: "1",
+      destination: "Manchester",
+      startDate: "24th April, 2023",
+      interests: ["food, nightlife"]
+    },
+    {
+      _id: "2",
+      destination: "London",
+      startDate: "25th April, 2023",
+      interests: ["art, culture"]
+    },
+    {
+      _id: "3",
+      destination: "Leeds",
+      startDate: "26th April, 2023",
+      interests: ["sport, nightlife"]
+    },
+  ];
+
 
   useEffect(() => {
     fetchAllHolidays().then((data) => {
+      
       //console.log(data.trips, "<< useEffect Homepage");
 
       //listOfHolidays = Array.from(data.trips);
@@ -49,8 +71,8 @@ const ListOfTrips = ({
               <TripCard
                 key={selectedHoliday._id}
                 destination={selectedHoliday.destination}
-                startDate={selectedHoliday.startDate}
-                preferences={selectedHoliday.preferences}
+                // startDate={selectedHoliday.startDate}
+                // preferences={selectedHoliday.preferences}
                 setView={setView}
                 view={view}
                 viewHolidayId={viewHolidayId}
