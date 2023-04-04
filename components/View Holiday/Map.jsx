@@ -84,7 +84,6 @@ const Map = () => {
 <MapViewDirections
   origin={{latitude: 53.954, longitude: -1.4}}
   destination={{latitude: 50.5, longitude: -4}}
-  apikey="AIzaSyAmempctutvUvlzRVCezRsSCCXeeYISRgk"
   strokeWidth={3}
   strokeColor="red"
 />
