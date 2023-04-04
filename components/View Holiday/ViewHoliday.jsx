@@ -2,26 +2,25 @@ import HolidayDetails from "./HolidayDetails";
 import React from "react";
 import { useState } from "react";
 import Header from "./Header";
-import Map from "./Map"
+import Map from "./Map";
 
-import { View, Text, StyleSheet,Button } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
 // import { Header } from "@react-navigation/native";
 import styles from "../../App-stylesheet";
 
-
-const ViewHoliday = ({ listOfHolidays,setView, view }) => {
-const tripData = [
+const ViewHoliday = ({ listOfHolidays, setView, view }) => {
+  const tripData = [
     {
       title: "trip1",
       author: "fergus",
       startLocation: {
         city: "nottingham",
-        coordinates: {              latitude: 53.954,              longitude: -1.4            },
+        coordinates: { latitude: 53.954, longitude: -1.4 },
       },
       destination: {
         city: "manchester",
-        coordinates: {              latitude: 50.5,              longitude: -4            },
+        coordinates: { latitude: 50.5, longitude: -4 },
         arrivalDate: "2023-04-04",
         departureDate: "2023-04-08",
         activities: [
@@ -48,18 +47,16 @@ const tripData = [
   return (
     <View style={styles.topContainer}>
       <Text> View Holiday Comp </Text>
-
-      <Map /> 
-      <ViewMap>Map Comp</ViewMap>
+      <Map>Map Comp</Map>
       <HolidayDetails listOfHolidays={listOfHolidays}>
         Hol Details Comp
       </HolidayDetails>
-      <Button 
-                            title="Back"
-                            onPress={() => {
-                            setView(0)}}
-                            />
-
+      <Button
+        title="Back"
+        onPress={() => {
+          setView(0);
+        }}
+      />
     </View>
   );
 };

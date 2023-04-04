@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Homepage from "./components/Homepage/Homepage";
 import AddTrip from "./components/Add Trip/AddTrip";
-import ViewHoliday from "./components/View Holiday/ViewHoliday";
+import Settings from "./components/Profile+Settings/Settings";
 import ProfileAndSettings from "./components/Profile+Settings/ProfileAndSettings";
 import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -36,7 +36,7 @@ export default function AppContent({ styles }) {
     );
   };
   const MoreScreen = () => {
-    return <ViewHoliday />;
+    return <Settings />;
   };
 
   return (
