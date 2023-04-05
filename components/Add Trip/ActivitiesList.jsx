@@ -15,8 +15,7 @@ export const ActivitiesList = ({ activitiesList, setActivitiesTemp }) => {
         
     }
     return (
-      <View>
-        <ListItem containerStyle={styles.itemStyleHorizontalFull}>
+        <ListItem key={activity.name} containerStyle={styles.itemStyleHorizontalFull}>
           <ListItem.Content>
             <View 
             //</ListItem.Content>style={{width:"100%"}}
@@ -24,14 +23,18 @@ export const ActivitiesList = ({ activitiesList, setActivitiesTemp }) => {
             <View 
             //style={styles.halfPageContainerLeft}
             >
-            <ListItem.Title>
-              <Text>{activity.name}</Text>
+            <ListItem.Title >
+              <Text style={styles.body}>{activity.name}</Text>
             </ListItem.Title>
             </View> 
             
             </View>
-            <ListItem.Subtitle style={{marginTop:5}}>
-              <Text>{activity.address}</Text>
+            <ListItem.Subtitle >
+              <Icon
+              type="material"
+              name="place"
+              color= "grey"
+              iconStyle={{margin:5}}/> <Text style={styles.smallMarginVert}>{activity.address}</Text>
             </ListItem.Subtitle>
           </ListItem.Content>
           <View 
@@ -45,7 +48,6 @@ export const ActivitiesList = ({ activitiesList, setActivitiesTemp }) => {
                 onPress={handleIconPress}></Icon>
             </View>
         </ListItem>
-      </View>
     )
   }
 
@@ -55,10 +57,9 @@ export const ActivitiesList = ({ activitiesList, setActivitiesTemp }) => {
       contentContainerStyle={{ justifyContent: "space-between" }}
     >
       {activitiesList.map((activity) => (
-        <ActivityCard activity={activity} key={activity.id} setActivitiesTemp={setActivitiesTemp} activitiesList={activitiesList} />
+        <ActivityCard activity={activity} key={activity.name} setActivitiesTemp={setActivitiesTemp} activitiesList={activitiesList} />
       ))}
     </ScrollView>
   )
 }
-
 

@@ -5,6 +5,8 @@ import { useState } from "react";
 import LottieView from "lottie-react-native";
 import styles from "../../App-stylesheet";
 import { ActivitiesList } from "./ActivitiesList";
+import { useNavigation } from '@react-navigation/native';
+
 
 const FormPage3 = ({
   origin,
@@ -20,16 +22,22 @@ const FormPage3 = ({
   setIsLoading,
   user,
   arrivalDate,
-  departureDate
+  departureDate,
+  page,
+  setPage
 }) => {
-
+  const navigation = useNavigation();
   const [animatedLoader, setAnimatedLoader]= useState(false)
+  // const [loader, setloader]= useState(false)
+
   const [formView, setFormView]=useState(0)
   const [activitiesTemp, setActivitiesTemp] =useState([])
   let destinationObj
   let originObj
   // let activitiesTemp
   let activitiesGeo
+
+
   const requestObj = { city: destination, preferences: checkedList };
 
   // const handlePress = () => {
@@ -143,10 +151,11 @@ const FormPage3 = ({
   }
     return (<View>
     <Text style={styles.inputHeaderPage3}>Click the button below to see the best {checkedList.join(", ")} venues in {destination}.  </Text>
-    <View style={{paddingBottom:100,margin:10}}>
+    <View style={{paddingBottom:100,margin:10, }}>
       <Button title ={"Generate Itinerary"}  buttonStyle={{
-                backgroundColor: 'rgba(111, 202, 186, 1)',
+                backgroundColor: '#F56853',
                 borderRadius: 10,
+                
               }} containerStyle={styles.primaryButtonContainer} onPress={handlePress}/>
       <Text style={styles.inputHeaderMargin}> </Text>
       {/* <FlatList data={activities} renderItem={((item)=>{<Item item={item}/>})}/> */}
@@ -190,7 +199,10 @@ const FormPage3 = ({
         // }),
       }};
       const response = await postTrip(TripObj);
+
       console.log(response, "after post Trip");
+     navigation.navigate("Home"); // navigate to Home
+
    } catch (error) {
       console.error(error);
     }
@@ -200,27 +212,52 @@ const FormPage3 = ({
     //     <Text style={styles.body}>{name}</Text>
     //   </View>
     // );
-
-    console.log(activitiesTemp)
-    return <View>
+    return <View style={styles.topContainerMargin}>
       <ActivitiesList activitiesList={activitiesTemp} setActivitiesTemp={setActivitiesTemp}/>
       
-      <Button title="Save Holiday" onPress={handlePressFinal}> Save Holiday</Button>
+      <View style={styles.buttonGroupHolder}>
+        <Button
+         containerStyle={styles.primaryButtonContainer}
+         buttonStyle = {styles.secondaryButton}
+         titleStyle ={styles.buttonTitleText2}
+          title="Back"
+          disabled={page === 0}
+          onPress={() => {
+            setPage((currPage) => currPage - 1);
+          }}
+        />
+        <Button
+          containerStyle={styles.primaryButtonContainer2}
+          buttonStyle = {styles.primaryButton}
+          titleStyle ={styles.buttonTitleText1}
+          
+          title={"Save Holiday"}
+          onPress={handlePressFinal}
+        >
+          {" "}
+          Save Holiday{" "}
+        </Button>
+        
+      </View>
+
+      {/* <Button containerStyle={styles.primaryButtonContainer} title="Save Holiday" onPress={handlePressFinal}> Save Holiday</Button> */}
     </View>
   }
   const LoadPage =()=>{
     return (
       <View style={{padding:100, paddingVertical:200}}>
-      <LottieView
+      <View>
+        {/* <LottieView
         source={require("./126076-comacon-planning.json")}
         style={styles.animation}
         autoPlay
-        />
-      <Text style={styles.h4}>Fetching suggestions for your trip to {destination}... </Text>
+        /> */}
+        </View>
+      <Text style={styles.h4center}>Fetching suggestions for {destination}... </Text>
     </View>
     )
   }
-  return (animatedLoader? <LoadPage/>: !activitiesTemp.length?<MainView/>:<SubmitPage activitiesTemp={activitiesTemp} setActivitiesTemp={setActivitiesTemp}/>
+  return (animatedLoader? <LoadPage/>:!activitiesTemp.length?<MainView/>:<SubmitPage activitiesTemp={activitiesTemp} setActivitiesTemp={setActivitiesTemp}/>
   )
 };
 

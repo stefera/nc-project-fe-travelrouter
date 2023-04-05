@@ -7,7 +7,10 @@ const styles = StyleSheet.create({
   },
   topContainerMargin: {
     flex: 1,
-    margin: 10,
+    margin: 5,
+  },
+  textContainerMargin: {
+    marginHorizontal: 5,
   },
   container: {
     flex: 0.4,
@@ -22,12 +25,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 10,
     paddingTop: 10,
+    marginHorizontal: 15,
   },
   containerScroller: {
     flexDirection: "column",
     flexWrap: "nowrap",
     paddingHorizontal: 10,
-    paddingTop: 10,
+    minHeight: 300,
   },
 
   preferenceHolder: {
@@ -74,6 +78,7 @@ const styles = StyleSheet.create({
   wrapperHorizontal: {
     height: 54,
     justifyContent: "center",
+    alignItems: "center",
     color: "black",
     marginBottom: 12,
     marginTop: 12,
@@ -93,10 +98,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   itemStyleHorizontalFull: {
-    height: 80,
-    width: "80%",
-    padding: 30,
-    margin: 10,
+    height: 70 - 80,
+    width: "95%",
+    padding: 10,
+    margin: 5,
     shadowColor: "#D3D3D3",
     shadowOpacity: 0.5,
     shadowRadius: 0.1,
@@ -105,6 +110,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.2,
     textAlign: "center",
     justifyContent: "center",
+    alignSelf: "center",
   },
 
   backgroundImgHome: {
@@ -126,8 +132,22 @@ const styles = StyleSheet.create({
   },
 
   h4: { fontSize: 14, fontWeight: 600 },
-  body: { fontSize: 16, fontWeight: "normal" },
+  h4center: {
+    fontSize: 14,
+    fontWeight: 600,
+    justifyContent: "center",
+    alignSelf: "center",
+  },
+
+  body: { fontSize: 16, fontWeight: 400 },
   small: { fontSize: 13, fontWeight: 300, color: "grey" },
+  smallMarginVert: {
+    fontSize: 14,
+    fontWeight: 300,
+    color: "grey",
+    marginTop: 5,
+  },
+
   smallMargin: {
     fontSize: 13,
     fontWeight: 300,
@@ -137,18 +157,23 @@ const styles = StyleSheet.create({
   },
 
   inputHeader: { fontSize: 14, fontWeight: 600 },
-  inputHeaderMargin: { fontSize: 14, fontWeight: 600, marginLeft: 10 },
+  inputHeaderMargin: {
+    fontSize: 14,
+    fontWeight: 600,
+    marginLeft: 10,
+  },
   inputHeaderPage3: {
     fontSize: 14,
     fontWeight: 600,
     alignSelf: "center",
     alignContent: "center",
     justifyContent: "center",
+    alignItems: "center",
     margin: 10,
     marginVertical: 20,
   },
 
-  dateTimePicker: { marginLeft: 10, marginVertical: 10 },
+  dateTimePicker: { marginLeft: 10, marginBottom: 15, marginRight: 10 },
 
   itemCard: {
     // boxShadow: 0,4,8,0,rgba(0,0,0,0.2),
@@ -159,42 +184,73 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffff",
     flexGrow: 1,
   },
-
+  primaryButtonContainer: {
+    height: 55,
+    width: 150,
+    marginVertical: 10,
+    marginHorizontal: 8,
+    borderWidth: 0,
+    alignSelf: "center",
+  },
+  primaryButtonContainer2: {
+    height: 55,
+    width: 150,
+    marginVertical: 10,
+    marginHorizontal: 8,
+    borderWidth: 0,
+    alignSelf: "center",
+  },
   primaryButton: {
     alignSelf: "center",
     justifyContent: "center",
     minHeight: 50,
-    maxWidth: "80%",
+    minWidth: 150,
+    marginHorizontal: 8,
+    borderWidth: 1,
+    borderRadius: 10,
+    backgroundColor: "#307AFF",
+  },
+
+  secondaryButton: {
+    alignSelf: "center",
+    justifyContent: "center",
+    minHeight: 50,
+    minWidth: 150,
+    marginHorizontal: 8,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 10,
+    backgroundColor: "",
+  },
+
+  tertiaryButton: {
+    alignSelf: "center",
+    justifyContent: "center",
+    minHeight: 50,
+    minWidth: 150,
+    marginHorizontal: 5,
     borderWidth: 0,
     borderRadius: 15,
+    backgroundColor: "#307AFF",
   },
 
-  primaryButtonContainer: {
-    marginHorizontal: 50,
-    height: 65,
-    marginVertical: 10,
-    width: "80%",
-    borderWidth: 0,
+  buttonGroupHolder: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    flex: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 80,
+    marginHorizontal: 15,
+    alignSelf: "center",
   },
-
-  // preferenceCard: {
-  //   width: "33.33%",
-  //   aspectRatio: 1,
-  //   borderWidth: 1,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // .primaryButton{
-  //   backgroundColor: #1143f8;
-  //   color: white;
-  //   font-weight: 600;
-  //   border-radius: 8px;
-  //   border-width: 1.5px;
-  //   min-width: 100% ;
-  //   min-height: 35px;
-  //   margin-bottom: 5px;
-  //   margin-top: 5px;
-  // }
+  buttonTitleText1: {
+    color: "white",
+    fontWeight: 500,
+  },
+  buttonTitleText2: {
+    color: "black",
+  },
 });
 
 export default styles;

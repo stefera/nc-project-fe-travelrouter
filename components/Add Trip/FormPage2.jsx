@@ -39,7 +39,7 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
 
     return (
    
-    <View>
+    <View style={styles.topContainerMargin}>
           <ScrollView contentContainerStyle={styles.containerThree}>
             {
             preferences.map((item, index) => {
@@ -54,11 +54,11 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
                     alignItems: 'center',
                     justifyContent: "center",
                     marginBottom: 10,
-                    rowGap:5,
+                    rowGap:10,
                     backgroundColor: checkedList.includes(item.value) ? 'lightgreen' : 'white',
                     padding: 10,
                     borderRadius:15,
-                    minHeight:75,
+                    minHeight:90,
                     borderColor: checkedList.includes(item.value) ? 'green' : 'black',
 }}>
                     <Icon type="material" name={item.icon}></Icon>

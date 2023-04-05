@@ -1,5 +1,5 @@
 import React from "react";
-import {View,Text} from "react-native"
+import {View,Text, TextInput} from "react-native"
 import { Card, List, ListItem} from "@rneui/base";
 
 // var About = require('./components/Home').default
@@ -14,8 +14,7 @@ const AddActivity = (({activityList,setActivityList})=>{
       <ListItem.Accordion
         content={
             <ListItem.Content>
-            <ListItem.Title>Top Users</ListItem.Title>
-            <ListItem.Subtitle>Tap to expand</ListItem.Subtitle>
+            <ListItem.Title>Manually add activity</ListItem.Title>
           </ListItem.Content>
         }
         isExpanded={expanded}
@@ -31,8 +30,9 @@ const AddActivity = (({activityList,setActivityList})=>{
             }}
             />
           <ListItem.Content>
-            <ListItem.Title>John Doe</ListItem.Title>
-            <ListItem.Subtitle>Principle Engineer</ListItem.Subtitle>
+            <TextInput>
+              
+            </TextInput>
           </ListItem.Content>
         </ListItem>
         <ListItem>
