@@ -1,7 +1,10 @@
-import { Button } from "@rneui/themed";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList} from "react-native";
+import { Button } from "@rneui/base";
 import { fetchActivites, geoCodeLocations, postTrip } from "../../utilis";
 import { useState } from "react";
+import LottieView from "lottie-react-native";
+import styles from "../../App-stylesheet";
+import { ActivitiesList } from "./ActivitiesList";
 
 const FormPage3 = ({
   origin,
@@ -19,27 +22,41 @@ const FormPage3 = ({
   arrivalDate,
   departureDate
 }) => {
+
+  const [animatedLoader, setAnimatedLoader]= useState(false)
+  const [formView, setFormView]=useState(0)
+  const [activitiesTemp, setActivitiesTemp] =useState([])
   let destinationObj
   let originObj
+  // let activitiesTemp
   let activitiesGeo
   const requestObj = { city: destination, preferences: checkedList };
 
-  const handlePress = () => {
-    // isLoading(true); // assuming isLoading is a function that returns a Promise
-    fetchActivites(requestObj)
-      .then((returnedActivities) => {
-        console.log(returnedActivities);
-        setActivities(returnedActivities);
-        // return isLoading(false); // assuming isLoading is a function that returns a Promise
-      })
-      .then(() => {
-        console.log("complete");
-        console.log(activities, "activities");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  // const handlePress = () => {
+  //   // isLoading(true); // assuming isLoading is a function that returns a Promise
+  //   setAnimatedLoader(true)
+  //   fetchActivites(requestObj)
+  //     .then((returnedActivities) => {
+  //       console.log(returnedActivities);
+  //       setActivities(returnedActivities);
+  //       activitiesTemp = returnedActivities
+  //       // return isLoading(false); // assuming isLoading is a function that returns a Promise
+  //     })
+  //     .then(() => {
+  //       console.log("complete");
+  //       console.log(activitiesTemp, "activitiesTemp");
+  //       setAnimatedLoader(false)
+  //       setFormView(1)
+
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
+
+
+  
+
 
   // })
   const cityLocations = [
@@ -107,13 +124,42 @@ const FormPage3 = ({
   // };
 
 
-
-  const handlePressFinal = async () => {
-  
+  const MainView = ()=>{
+  const handlePress = async () => {
     try {
+      setAnimatedLoader(true)
+      console.log(requestObj)
+      const returnedActivities = await fetchActivites(requestObj)
+      console.log(returnedActivities, "returned")
+      setActivities([...returnedActivities])
+      setActivitiesTemp ([...returnedActivities])
+      console.log("complete")
+      console.log(activitiesTemp, "activitiesTemp")
+      setAnimatedLoader(false)
+      setFormView(1)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+    return (<View>
+    <Text style={styles.inputHeaderPage3}>Click the button below to see the best {checkedList.join(", ")} venues in {destination}.  </Text>
+    <View style={{paddingBottom:100,margin:10}}>
+      <Button title ={"Generate Itinerary"}  buttonStyle={{
+                backgroundColor: 'rgba(111, 202, 186, 1)',
+                borderRadius: 10,
+              }} containerStyle={styles.primaryButtonContainer} onPress={handlePress}/>
+      <Text style={styles.inputHeaderMargin}> </Text>
+      {/* <FlatList data={activities} renderItem={((item)=>{<Item item={item}/>})}/> */}
+    </View>
+    </View>
+  )}
+    
+  const SubmitPage= ({activitiesTemp, setActivitiesTemp})=>{
+    const handlePressFinal = async () => {
+      try {
       // Assuming isLoading is a function that returns a Promise
       // await isLoading(true);
-  
+    
       const returnedCityObjs = await geoCodeLocations(cityLocations);
       console.log(returnedCityObjs, "returnedcities");
       
@@ -124,7 +170,6 @@ const FormPage3 = ({
       console.log(activitiesGeo,"result of geocoding activities");
            
       const TripObj = {
-        title: "trip15",
         author: user.name,
         city: originObj.city,
         coordinates: originObj.coordinates,
@@ -146,27 +191,37 @@ const FormPage3 = ({
       }};
       const response = await postTrip(TripObj);
       console.log(response, "after post Trip");
-  } catch (error) {
+   } catch (error) {
       console.error(error);
     }
-  };
+    };
+    // const Item = ({name}) => (
+    //   <View style={styles.h4}>
+    //     <Text style={styles.body}>{name}</Text>
+    //   </View>
+    // );
 
-
-  const Item = ({name}) => (
-    <View style={styles.h4}>
-      <Text style={styles.body}>{name}</Text>
+    console.log(activitiesTemp)
+    return <View>
+      <ActivitiesList activitiesList={activitiesTemp} setActivitiesTemp={setActivitiesTemp}/>
+      
+      <Button title="Save Holiday" onPress={handlePressFinal}> Save Holiday</Button>
     </View>
-  );
-  return (
-    <View>
-      <Text> Activities from chat gpt here </Text>
-      <Button onPress={handlePress}> Generate Itinerary</Button>
-      <Text> State: Origin:{origin} Obj:{!originObj?<Text/>:originObj.id}</Text>
-      <Text> State: Destination: {destination} Obj:{!destinationObj?<Text/>:destinationObj.id}</Text>
-      <FlatList data={activities} renderItem={((item)=>{<Item item={item}/>})}/>
-      <Button onPress={handlePressFinal}> GeoCode and Send</Button>
+  }
+  const LoadPage =()=>{
+    return (
+      <View style={{padding:100, paddingVertical:200}}>
+      <LottieView
+        source={require("./126076-comacon-planning.json")}
+        style={styles.animation}
+        autoPlay
+        />
+      <Text style={styles.h4}>Fetching suggestions for your trip to {destination}... </Text>
     </View>
-  );
+    )
+  }
+  return (animatedLoader? <LoadPage/>: !activitiesTemp.length?<MainView/>:<SubmitPage activitiesTemp={activitiesTemp} setActivitiesTemp={setActivitiesTemp}/>
+  )
 };
 
 export default FormPage3;
