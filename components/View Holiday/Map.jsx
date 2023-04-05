@@ -8,13 +8,16 @@ const Map = ({ viewHolidayId, view }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [region, setDestinationRegion] = useState();
 
-  console.log(viewHolidayId);
   useEffect(() => {
-    fetchTripById(viewHolidayId).then((data) => {
-      setTripData([data]);
-      setIsLoading(false);
-      setDestinationRegion(tripData[0].destination.coordinates);
-    });
+    fetchTripById(viewHolidayId)
+      .then((data) => {
+        setTripData([data]);
+        setIsLoading(false);
+        setDestinationRegion(tripData[0].destination.coordinates);
+      })
+      .catch((error) => {
+        console.log("Error fetching data: ", error);
+      });
   }, [view, isLoading]);
 
   if (isLoading) {
