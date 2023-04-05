@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import reactDom from "react-dom";
 import { ListItem } from "@rneui/themed";
@@ -17,6 +17,16 @@ const TripCard = ({
   setViewHolidayId,
   viewHolidayId,
 }) => {
+  const [formattedStartDate, setformattedStartDate] = useState(null);
+
+  useEffect(() => {
+    const date = new Date(startDate);
+    const formattedStartDate = date.toLocaleDateString("en-US", {
+      timeZone: "UTC",
+    });
+    setformattedStartDate(formattedStartDate);
+  }, [startDate]);
+
   const handlePress = (id) => {
     console.log(id);
     setViewHolidayId(id);
@@ -38,7 +48,8 @@ const TripCard = ({
         </ListItem.Title>
         <ListItem.Subtitle>
           <Text style={styles.small}>
-            Trip begins: {startDate.substring(0, 10)}
+            {/* Trip begins: {startDate.substring(0, 10)} */}
+            Trip begins: {formattedStartDate}
           </Text>
         </ListItem.Subtitle>
         <ListItem.Subtitle>

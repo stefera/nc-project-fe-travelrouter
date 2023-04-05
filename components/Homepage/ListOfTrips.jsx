@@ -12,12 +12,16 @@ const ListOfTrips = ({ setView, view, viewHolidayId, setViewHolidayId }) => {
   const [listOfHols, setListOfHols] = useState([]);
 
   useEffect(() => {
-    fetchAllHolidays().then((data) => {
-      console.log(data, "<< data LOT");
-      setListOfHols(data.trips);
-      console.log(listOfHols, "<< listOfHols   LOT");
-      setIsLoading(false);
-    });
+    fetchAllHolidays()
+      .then((data) => {
+        console.log("data.trips LOT: ", data.trips);
+        setListOfHols(data.trips);
+        //console.log(listOfHols, "<< listOfHols   LOT");
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log("Error fetching data: ", error);
+      });
   }, [view, isLoading]);
 
   if (isLoading) {
