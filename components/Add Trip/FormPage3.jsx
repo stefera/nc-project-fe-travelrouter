@@ -172,13 +172,11 @@ const FormPage3 = ({
     return (
       <View style={{ marginVertical: 100 }}>
         <Text style={styles.inputHeaderPage3}>
-          Click to find the best {checkedList.join(", ")} venues in{" "}
-          {destination}.{" "}
+          Find the best {checkedList.join(", ")} venues in {destination} below.{" "}
         </Text>
-        <View>
+        <View style={{ paddingBottom: 100, margin: 10 }}>
           <Button
-            title="Generate Itinerary"
-            titleProps={styles.buttonTitleText3}
+            title={"Generate My Itinerary"}
             buttonStyle={{
               backgroundColor: "#F56853",
               borderRadius: 20,
