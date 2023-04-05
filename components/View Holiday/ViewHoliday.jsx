@@ -7,7 +7,6 @@ import { View, Text, StyleSheet, Button } from "react-native";
 
 // import { Header } from "@react-navigation/native";
 import styles from "../../App-stylesheet";
-
 const ViewHoliday = ({ viewHolidayId, setViewHolidayId, view, setView }) => {
   return (
     <View style={styles.topContainer}>
