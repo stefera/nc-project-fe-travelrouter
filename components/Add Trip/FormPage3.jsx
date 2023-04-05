@@ -131,6 +131,46 @@ const FormPage3 = ({
   //     });
   // };
 
+  const Button1 = ()=>{
+    return     <Button
+     containerStyle={styles.primaryButtonContainer}
+     buttonStyle = {styles.secondaryButton}
+     titleStyle ={styles.buttonTitleText2}
+      title="Back"
+      disabled={page === 0}
+      onPress={() => {
+        setPage((1));
+      }}
+    />
+    
+    
+
+  }
+  const Button2 = ()=>{
+    return <Button
+    containerStyle={styles.primaryButtonContainer2}
+    buttonStyle = {styles.primaryButton}
+    titleStyle ={styles.buttonTitleText1}
+    title={"Save Holiday"}
+    disabled={!activitiesTemp.length}
+    onPress={handlePressFinal}
+  >
+    {" "}
+    Save Holiday{" "}
+  </Button>
+  }
+  const Button3 = ()=>{
+    return <Button
+    containerStyle={styles.primaryButtonContainer2}
+    buttonStyle = {styles.primaryButton}
+    titleStyle ={styles.buttonTitleText1}
+    title={"Save Holiday"}
+    disabled={!activitiesTemp.length}
+  >
+    {" "}
+    Save Holiday{" "}
+  </Button>
+  }
 
   const MainView = ()=>{
   const handlePress = async () => {
@@ -159,6 +199,12 @@ const FormPage3 = ({
                 borderRadius:20
                 
               }} containerStyle={styles.primaryButtonContainer3} onPress={handlePress}/>
+      <View style={styles.buttonGroupHolder}>
+      <Button1/>
+      <Button3/>
+      </View>
+      
+      
       {/* <Text style={styles.inputHeaderMargin}> </Text> */}
       {/* <FlatList data={activities} renderItem={((item)=>{<Item item={item}/>})}/> */}
     </View>
@@ -218,28 +264,8 @@ const FormPage3 = ({
       <ActivitiesList activitiesList={activitiesTemp} setActivitiesTemp={setActivitiesTemp}/>
       
       <View style={styles.buttonGroupHolder}>
-        <Button
-         containerStyle={styles.primaryButtonContainer}
-         buttonStyle = {styles.secondaryButton}
-         titleStyle ={styles.buttonTitleText2}
-          title="Back"
-          disabled={page === 0}
-          onPress={() => {
-            setPage((currPage) => currPage - 1);
-          }}
-        />
-        <Button
-          containerStyle={styles.primaryButtonContainer2}
-          buttonStyle = {styles.primaryButton}
-          titleStyle ={styles.buttonTitleText1}
-          
-          title={"Save Holiday"}
-          onPress={handlePressFinal}
-        >
-          {" "}
-          Save Holiday{" "}
-        </Button>
-        
+      <Button1/>
+      <Button2/>
       </View>
 
       {/* <Button containerStyle={styles.primaryButtonContainer} title="Save Holiday" onPress={handlePressFinal}> Save Holiday</Button> */}
@@ -264,3 +290,5 @@ const FormPage3 = ({
 };
 
 export default FormPage3;
+
+
