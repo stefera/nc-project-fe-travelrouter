@@ -4,25 +4,23 @@ const db = axios.create({ baseURL: "http://localhost:8999/" });
 
 export const fetchActivites = (params) => {
   console.log("here");
-  return (
-    db
-      .get("/api/trips/trip1/makePreferences", {
-        params: params,
-      })
-      //db.get("/api/trips/trip1/makePreferences")
-      .then(({ data }) => {
-        console.log(data, "data");
-        console.log(data.activities, "activities");
+  return db
+    .get("/api/trips/trip1/makePreferences", {
+      params: params,
+    })
+    .then(({ data }) => {
+      // console.log(data, "data");
+      // console.log(data.activities, "activities");
 
-        return data.activities;
-      })
-      .catch((error) => console.log(error))
-  );
+      return data.activities;
+    })
+    .catch((error) => console.log(error));
 };
 
 export const geoCodeLocations = (params) => {
   const cities = params;
   console.log(cities);
+  //console.log("here in utils", params);
   return db
     .get("/api/trips/geoCodeActivities", { params: cities })
     .then(({ data }) => {
@@ -33,7 +31,7 @@ export const geoCodeLocations = (params) => {
 };
 
 export const postTrip = (params) => {
-  console.log("here, posttrip");
+  //console.log("here, posttrip");
   return (
     db
       .post("/api/trips/", {
@@ -41,7 +39,7 @@ export const postTrip = (params) => {
       })
       //db.get("/api/trips/trip1/makePreferences")
       .then(({ data }) => {
-        console.log(data, "data in postTrip");
+        //console.log(data, "data in postTrip");
         return data;
 
         // return data.activities;
@@ -62,3 +60,25 @@ export const postTrip = (params) => {
 //     })
 //     .catch((error) => console.log(error));
 // };
+
+export const fetchAllHolidays = (params) => {
+  console.log(">> fetchAllHolidays called");
+  return db
+    .get("/api/trips", { params: params })
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((error) => console.log(error));
+};
+
+export const fetchTripById = (id) => {
+  //console.log(params, "<< params");
+  // destructure from paras here
+  let path = `/api/trips/${id}`;
+  return db
+    .get(path)
+    .then(({ data }) => {
+      return data.trip;
+    })
+    .catch((error) => console.log(error));
+};

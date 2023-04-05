@@ -1,25 +1,55 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import {View, FlatList, Text,ScrollView} from "react-native"
+import { React, useEffect, useState } from "react";
+import { View, FlatList, Text, ScrollView } from "react-native";
 import reactDom from "react-dom";
 import TripCard from "./TripCard";
-import { List} from "react-native-paper";
+import { List } from "react-native-paper";
 import styles from "../../App-stylesheet";
+import { fetchAllHolidays } from "../../utilis";
 
+const ListOfTrips = ({ setView, view, viewHolidayId, setViewHolidayId }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [listOfHols, setListOfHols] = useState([]);
 
-const ListOfTrips = (({listOfHolidays})=>{
-    console.log (listOfHolidays[0])
-    return (<View 
-    style={styles.container}
-    >
-        <Text style={styles.h4}>Your trips</Text>   
-        <ScrollView horizontal = {true}>{
-        listOfHolidays[0].map((selectedHoliday)=>{
-            return <TripCard key={selectedHoliday.id} holiday={selectedHoliday}/>
-        })}
+  useEffect(() => {
+    fetchAllHolidays().then((data) => {
+      console.log(data, "<< data LOT");
+      setListOfHols(data.trips);
+      console.log(listOfHols, "<< listOfHols   LOT");
+      setIsLoading(false);
+    });
+  }, [view, isLoading]);
+
+  if (isLoading) {
+    return (
+      <View style={styles.container}>
+        <Text> Loading ...</Text>
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.h4}>Your trips</Text>
+        <ScrollView horizontal={true}>
+          {listOfHols.map((selectedHoliday) => {
+            return (
+              <TripCard
+                key={selectedHoliday._id}
+                id={selectedHoliday._id}
+                destination={selectedHoliday.destination}
+                startDate={selectedHoliday.startDate}
+                preferences={selectedHoliday.preferences}
+                setView={setView}
+                view={view}
+                viewHolidayId={viewHolidayId}
+                setViewHolidayId={setViewHolidayId}
+              />
+            );
+          })}
         </ScrollView>
-        
-        </View>)
-})
+      </View>
+    );
+  }
+};
 
-export default ListOfTrips
+export default ListOfTrips;

@@ -1,18 +1,28 @@
-import ViewMap from "./Map";
 import HolidayDetails from "./HolidayDetails";
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import Header from "./Header";
+import Map from "./Map";
+
+import { View, Text, StyleSheet, Button } from "react-native";
+
 // import { Header } from "@react-navigation/native";
+import styles from "../../App-stylesheet";
 
-const ViewHoliday = ({ listOfHolidays }) => {
+const ViewHoliday = ({ viewHolidayId, setViewHolidayId, view, setView }) => {
   return (
-    <View>
-      <Text> View Holiday Comp </Text>
-
-      <ViewMap>Map Comp</ViewMap>
-      <HolidayDetails listOfHolidays={listOfHolidays}>
+    <View style={styles.topContainer}>
+      <Text></Text>
+      <Text></Text>
+      <Map />
+      <HolidayDetails viewHolidayId={viewHolidayId} view={view}>
         Hol Details Comp
       </HolidayDetails>
+      <Button
+        title="Back"
+        onPress={() => {
+          setView(0);
+        }}
+      />
     </View>
   );
 };
