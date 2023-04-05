@@ -27,7 +27,6 @@
     "dotenv": "^16.0.3",
     "expo": "~48.0.9",
     "expo-status-bar": "~1.4.4",
-    "fs": "^0.0.1-security",
     "inter-ui": "^3.19.3",
     "openai": "^3.2.1",
     "react": "^18.2.0",
