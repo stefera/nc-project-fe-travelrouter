@@ -3,46 +3,6 @@ import MapViewDirections from "react-native-maps-directions";
 import React, { useEffect, useState } from "react";
 import { fetchTripById } from "../../utilis";
 
-// const tripData = [
-//   {
-//     title: "trip3",
-//     author: "martin",
-//     city: "london",
-//     coordinates: {
-//       latitude: 51.5072,
-//       longitude: -0.1276,
-//     },
-//     preferences: ["nightlife", "food"],
-//     destination: {
-//       city: "manchester",
-//       coordinates: {
-//         latitude: 53.4808,
-//         longitude: -2.2426,
-//       },
-//       arrivalDate: "2023-04-04",
-//       departureDate: "2023-04-08",
-//       activities: [
-//         {
-//           name: "The Warehouse Project",
-//           address: "Mayfield Train Station, The Depot, Manchester M1 2QF",
-//           coordinates: {
-//             latitude: 53.4756,
-//             longitude: -2.2253,
-//           },
-//         },
-//         {
-//           name: "Hidden at Downtex Mill",
-//           address: "Mayfield Train Station, The Depot, Manchester M1 2QF",
-//           coordinates: {
-//             latitude: 53.4756,
-//             longitude: -2.2253,
-//           },
-//         },
-//       ],
-//     },
-//   },
-// ];
-
 const Map = ({ viewHolidayId, view }) => {
   const [tripData, setTripData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -53,7 +13,6 @@ const Map = ({ viewHolidayId, view }) => {
       setIsLoading(false);
     });
   }, [view, isLoading]);
-
   if (isLoading) {
     return <MapView></MapView>;
   } else {
@@ -68,7 +27,6 @@ const Map = ({ viewHolidayId, view }) => {
             />
           );
         })}
-
         {tripData.map((item, index) => {
           return (
             <Marker
@@ -78,7 +36,6 @@ const Map = ({ viewHolidayId, view }) => {
             />
           );
         })}
-
         {tripData[0].destination.activities.map((activity, index) => {
           return (
             <Marker
@@ -89,17 +46,14 @@ const Map = ({ viewHolidayId, view }) => {
             />
           );
         })}
-
         {tripData.map((location) => {
-          return (
-            <MapViewDirections
-              origin={location.coordinates}
-              destination={location.destination.coordinates}
-              strokeWidth={3}
-              apikey=""
-              strokeColor="#FF0000"
-            />
-          );
+          <MapViewDirections
+            origin={location.coordinates}
+            destination={location.destination.coordinates}
+            strokeWidth={3}
+            apikey=""
+            strokeColor="#FF0000"
+          />;
         })}
       </MapView>
     );
