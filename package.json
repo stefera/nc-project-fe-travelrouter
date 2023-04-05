@@ -29,7 +29,7 @@
     "expo-status-bar": "~1.4.4",
     "fs": "^0.0.1-security",
     "inter-ui": "^3.19.3",
-    "lottie-ios": "3.1.8",
+    "lottie-ios": "3.4.0",
     "lottie-react-native": "5.1.4",
     "openai": "^3.2.1",
     "react": "^18.2.0",
