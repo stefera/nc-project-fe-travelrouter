@@ -13,7 +13,7 @@ const ViewHoliday = ({ viewHolidayId, setViewHolidayId, view, setView }) => {
     <View style={styles.topContainer}>
       <Text></Text>
       <Text></Text>
-      <Map />
+      <Map viewHolidayId={viewHolidayId} view={view}/>
       <HolidayDetails viewHolidayId={viewHolidayId} view={view}>
         Hol Details Comp
       </HolidayDetails>
