@@ -3,18 +3,17 @@ import MapViewDirections from "react-native-maps-directions";
 import React, { useEffect, useState } from "react";
 import { fetchTripById } from "../../utilis";
 
-
 const Map = ({ viewHolidayId, view }) => {
   const [tripData, setTripData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [region, setDestinationRegion] = useState()
+  const [region, setDestinationRegion] = useState();
 
   console.log(viewHolidayId);
   useEffect(() => {
     fetchTripById(viewHolidayId).then((data) => {
       setTripData([data]);
       setIsLoading(false);
-      setDestinationRegion(tripData[0].destination.coordinate)
+      setDestinationRegion(tripData[0].destination.coordinates);
     });
   }, [view, isLoading]);
 
@@ -24,10 +23,14 @@ const Map = ({ viewHolidayId, view }) => {
     return <MapView provider="google"></MapView>;
   } else {
     return (
-      <MapView style={{ height: "200%" }} 
-      provider="google"
-      minZoomLevel={15}
-      initialRegion={region} >
+      <MapView
+        style={{ height: "300%" }}
+        provider="google"
+        // minZoomLevel={15}
+
+        initialZoom={9}
+        initialRegion={region}
+      >
         {tripData.map((item, index) => {
           return (
             <Marker
@@ -64,7 +67,7 @@ const Map = ({ viewHolidayId, view }) => {
             origin={location.coordinates}
             destination={location.destination.coordinates}
             strokeWidth={3}
-            apikey="AIzaSyCaseJv5f2W66vmEZdWNC2X0sHa7yD9cOU"
+            apikey=""
             strokeColor="#FF0000"
           />;
         })}
