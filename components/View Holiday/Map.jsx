@@ -54,8 +54,6 @@ const Map = ({ viewHolidayId, view }) => {
     });
   }, [view, isLoading]);
 
-  console.log("tripData >> ", data);
-
   if (isLoading) {
     return <MapView></MapView>;
   } else {
