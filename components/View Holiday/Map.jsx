@@ -17,8 +17,6 @@ const Map = ({ viewHolidayId, view }) => {
     });
   }, [view, isLoading]);
 
-  // const destinationCoordinates = tripData[0].destination.coordinates;
-
   if (isLoading) {
     return <MapView provider="google"></MapView>;
   } else {

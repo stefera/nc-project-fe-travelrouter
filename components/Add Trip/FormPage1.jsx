@@ -34,11 +34,12 @@ const FormPage1 = ({
 
   return (
     <View>
-      <View className="destination-details-form">
+      <View style={styles.topContainerMargin1}>
         <Text style={styles.inputHeaderMargin}>Origin City</Text>
         <Input
           // label={"Destination"}
           // labelStyle={styles.inputHeader}
+          containerStyle={{marginBottom:15}}
           value={origin}
           onChangeText={(value) => {
             setTextInput(value);
@@ -51,6 +52,8 @@ const FormPage1 = ({
         <Input
           // label={"Destination"}
           // labelStyle={styles.inputHeader}
+          containerStyle={{marginBottom:15}}
+
           value={destination}
           onChangeText={(value) => {
             setTextInput(value);

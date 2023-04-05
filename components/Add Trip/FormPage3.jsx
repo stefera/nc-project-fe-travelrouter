@@ -5,6 +5,8 @@ import { useState } from "react";
 import LottieView from "lottie-react-native";
 import styles from "../../App-stylesheet";
 import { ActivitiesList } from "./ActivitiesList";
+import { useNavigation } from "@react-navigation/native";
+
 const FormPage3 = ({
   origin,
   destination,
@@ -20,14 +22,20 @@ const FormPage3 = ({
   user,
   arrivalDate,
   departureDate,
+  page,
+  setPage,
 }) => {
+  const navigation = useNavigation();
   const [animatedLoader, setAnimatedLoader] = useState(false);
+  // const [loader, setloader]= useState(false)
+
   const [formView, setFormView] = useState(0);
   const [activitiesTemp, setActivitiesTemp] = useState([]);
   let destinationObj;
   let originObj;
   // let activitiesTemp
   let activitiesGeo;
+
   const requestObj = { city: destination, preferences: checkedList };
   // const handlePress = () => {
   //   // isLoading(true); // assuming isLoading is a function that returns a Promise
@@ -49,6 +57,7 @@ const FormPage3 = ({
   //       console.error(error);
   //     });
   // };
+
   // })
   const cityLocations = [
     { city: origin, id: "origin" },
@@ -67,6 +76,7 @@ const FormPage3 = ({
   //       //   originObj=({id:id, city:city, coordinates:coordinates })
   //       //   return { id, city, coordinates };
   //       // });
+
   //       originObj = returnedCityObjs.filter((city) => city.id === "origin")[0]
   //       destinationObj = returnedCityObjs.filter((city) => city.id === "destination")[0]
   //       // return isLoading(false); // assuming isLoading is a function that returns a Promise
@@ -75,6 +85,7 @@ const FormPage3 = ({
   //     .then(() => {
   //       console.log(activitiesGeo)
   //       setActivities(activitiesGeo)}).then(()=>{
+
   //         // console.log(originObj, "Final origin obj");
   //         // console.log(destinationObj, "Final destination obj");
   //         console.log(activities, "result of geocoding activities");
@@ -94,6 +105,7 @@ const FormPage3 = ({
   //             departureDate: departureDate,
   //           },
   //           activities:activitiesGeo,
+
   //         }
   //         // console.log(activities)
   //   postTrip(TripObj)
@@ -107,6 +119,39 @@ const FormPage3 = ({
   //       console.error(error);
   //     });
   // };
+
+  const Button1 = () => {
+    return (
+      <Button
+        containerStyle={styles.primaryButtonContainer}
+        buttonStyle={styles.secondaryButton}
+        titleStyle={styles.buttonTitleText2}
+        title="Back"
+        disabled={page === 0}
+        onPress={() => {
+          setPage(1);
+        }}
+      />
+    );
+  };
+  const Button2 = () => {
+    return;
+  };
+  const Button3 = () => {
+    return (
+      <Button
+        containerStyle={styles.primaryButtonContainer2}
+        buttonStyle={styles.primaryButton}
+        titleStyle={styles.buttonTitleText1}
+        title={"Save Holiday"}
+        disabled={!activitiesTemp.length}
+      >
+        {" "}
+        Save Holiday{" "}
+      </Button>
+    );
+  };
+
   const MainView = () => {
     const handlePress = async () => {
       try {
@@ -125,40 +170,51 @@ const FormPage3 = ({
       }
     };
     return (
-      <View>
+      <View style={{ marginVertical: 100 }}>
         <Text style={styles.inputHeaderPage3}>
-          Click the button below to see the best {checkedList.join(", ")} venues
-          in {destination}.{" "}
+          Click to find the best {checkedList.join(", ")} venues in{" "}
+          {destination}.{" "}
         </Text>
-        <View style={{ paddingBottom: 100, margin: 10 }}>
+        <View>
           <Button
-            title={"Generate Itinerary"}
+            title="Generate Itinerary"
+            titleProps={styles.buttonTitleText3}
             buttonStyle={{
-              backgroundColor: "rgba(111, 202, 186, 1)",
-              borderRadius: 10,
+              backgroundColor: "#F56853",
+              borderRadius: 20,
             }}
-            containerStyle={styles.primaryButtonContainer}
+            containerStyle={styles.primaryButtonContainer3}
             onPress={handlePress}
           />
-          <Text style={styles.inputHeaderMargin}> </Text>
+          <View style={styles.buttonGroupHolder}>
+            <Button1 />
+            <Button3 />
+          </View>
+
+          {/* <Text style={styles.inputHeaderMargin}> </Text> */}
           {/* <FlatList data={activities} renderItem={((item)=>{<Item item={item}/>})}/> */}
         </View>
       </View>
     );
   };
+
   const SubmitPage = ({ activitiesTemp, setActivitiesTemp }) => {
     const handlePressFinal = async () => {
       try {
         // Assuming isLoading is a function that returns a Promise
         // await isLoading(true);
+
         const returnedCityObjs = await geoCodeLocations(cityLocations);
         console.log(returnedCityObjs, "returnedcities");
+
         originObj = returnedCityObjs.filter((city) => city.id === "origin")[0];
         destinationObj = returnedCityObjs.filter(
           (city) => city.id === "destination"
         )[0];
+
         activitiesGeo = await geoCodeLocations(activities);
         console.log(activitiesGeo, "result of geocoding activities");
+
         const TripObj = {
           author: user.name,
           city: originObj.city,
@@ -180,9 +236,10 @@ const FormPage3 = ({
             // }),
           },
         };
-        console.log("TripObj >>", TripObj);
         const response = await postTrip(TripObj);
+
         console.log(response, "after post Trip");
+        navigation.navigate("Home"); // navigate to Home
       } catch (error) {
         console.error(error);
       }
@@ -192,30 +249,44 @@ const FormPage3 = ({
     //     <Text style={styles.body}>{name}</Text>
     //   </View>
     // );
-    console.log(activitiesTemp, "<< activitiesTemp");
     return (
-      <View>
+      <View style={styles.topContainerMargin1}>
         <ActivitiesList
           activitiesList={activitiesTemp}
           setActivitiesTemp={setActivitiesTemp}
         />
-        <Button title="Save Holiday" onPress={handlePressFinal}>
-          {" "}
-          Save Holiday
-        </Button>
+
+        <View style={styles.buttonGroupHolder}>
+          <Button1 />
+          <Button
+            containerStyle={styles.primaryButtonContainer2}
+            buttonStyle={styles.primaryButton}
+            titleStyle={styles.buttonTitleText1}
+            title={"Save Holiday"}
+            disabled={!activitiesTemp.length}
+            onPress={handlePressFinal}
+          >
+            {" "}
+            Save Holiday{" "}
+          </Button>
+        </View>
+
+        {/* <Button containerStyle={styles.primaryButtonContainer} title="Save Holiday" onPress={handlePressFinal}> Save Holiday</Button> */}
       </View>
     );
   };
   const LoadPage = () => {
     return (
       <View style={{ padding: 100, paddingVertical: 200 }}>
-        <LottieView
-          source={require("./126076-comacon-planning.json")}
-          style={styles.animation}
-          autoPlay
-        />
-        <Text style={styles.h4}>
-          Fetching suggestions for your trip to {destination}...{" "}
+        <View>
+          <LottieView
+            source={require("./126076-comacon-planning.json")}
+            style={styles.animation}
+            autoPlay
+          />
+        </View>
+        <Text style={styles.h4center}>
+          Fetching suggestions for {destination}...{" "}
         </Text>
       </View>
     );

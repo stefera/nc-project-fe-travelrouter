@@ -1,7 +1,7 @@
-import { ButtonGroup } from "@rneui/themed";
+import { ButtonGroup, Button } from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { View, Text, Button, TextComponent } from "react-native";
+import { View, Text, TextComponent } from "react-native";
 import styles from "../../App-stylesheet";
 import FormPage1 from "./FormPage1";
 import FormPage2 from "./FormPage2";
@@ -83,6 +83,8 @@ const Form = ({ isLoading, setIsLoading, user }) => {
           user={user}
           arrivalDate={arrivalDate}
           departureDate={departureDate}
+          page={page}
+          setPage={setPage}
         />
       );
     }
@@ -93,7 +95,7 @@ const Form = ({ isLoading, setIsLoading, user }) => {
       {/* <View className="progress-bar" style={{width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%"}}>
                    <Text>add progress bar css here</Text>
             </View>         */}
-      <View>
+      <View style={styles.textContainerMargin}>
         <Text style={styles.h3Margin}>{formTitles[page]}</Text>
         <Text style={styles.smallMargin}>
           {subtitles[page]}
@@ -106,27 +108,35 @@ const Form = ({ isLoading, setIsLoading, user }) => {
         </Text>
       </View>
       <View className="body">{pageDisplay()}</View>
-      <View className="footer">
+      {page>1?null:
+      <View style={styles.buttonGroupHolder}>
         <Button
-          title="Prev"
+         containerStyle={styles.primaryButtonContainer}
+         buttonStyle = {styles.secondaryButton}
+         titleStyle ={styles.buttonTitleText2}
+          title="Back"
           disabled={page === 0}
           onPress={() => {
             setPage((currPage) => currPage - 1);
           }}
         />
         <Button
-          style={styles.primaryButton}
-          title={"Next"}
+          containerStyle={styles.primaryButtonContainer2}
+          buttonStyle = {styles.primaryButton}
+          titleStyle ={styles.buttonTitleText1}
+          title={"Continue"}
           disabled={page === formTitles.length - 1}
           onPress={() => {
             setPage((currPage) => currPage + 1);
           }}
         >
           {" "}
-          Next{" "}
+          Continue{" "}
         </Button>
-        <Button
-          style={styles.primaryButton}
+        
+      </View>
+      }
+      {/* <Button
           title={"Next Test"}
           onPress={() => {
             setPage(2)
@@ -135,10 +145,8 @@ const Form = ({ isLoading, setIsLoading, user }) => {
             
           }}
         >
-          
-          Set
-        </Button>
-      </View>
+        
+        </Button> */}
     </View>
   );
 };

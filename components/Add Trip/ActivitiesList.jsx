@@ -13,40 +13,47 @@ export const ActivitiesList = ({ activitiesList, setActivitiesTemp }) => {
       setActivitiesTemp(newList);
     };
     return (
-      <View>
-        <ListItem containerStyle={styles.itemStyleHorizontalFull}>
-          <ListItem.Content>
-            <View
-            //</ListItem.Content>style={{width:"100%"}}
-            >
-              <View
-              //style={styles.halfPageContainerLeft}
-              >
-                <ListItem.Title>
-                  <Text>{activity.name}</Text>
-                </ListItem.Title>
-              </View>
-            </View>
-            <ListItem.Subtitle style={{ marginTop: 5 }}>
-              <Text>{activity.address}</Text>
-            </ListItem.Subtitle>
-          </ListItem.Content>
+      <ListItem
+        key={activity.name}
+        containerStyle={styles.itemStyleHorizontalFull}
+      >
+        <ListItem.Content>
           <View
-          //style={styles.halfPageContainerRight}
+          //</ListItem.Content>style={{width:"100%"}}
           >
-            <Icon
-              name="delete"
-              type="material"
-              color={"red"}
-              size={25}
-              onPress={handleIconPress}
-            ></Icon>
+            <View
+            //style={styles.halfPageContainerLeft}
+            >
+              <ListItem.Title>
+                <Text style={styles.body}>{activity.name}</Text>
+              </ListItem.Title>
+            </View>
           </View>
-        </ListItem>
-      </View>
+          <ListItem.Subtitle>
+            <Icon
+              type="material"
+              name="place"
+              color="grey"
+              iconStyle={{ margin: 5 }}
+            />{" "}
+            <Text style={styles.smallMarginVert}>{activity.address}</Text>
+          </ListItem.Subtitle>
+        </ListItem.Content>
+        <View
+        //style={styles.halfPageContainerRight}
+        >
+          <Icon
+            name="delete"
+            type="material"
+            color={"red"}
+            size={25}
+            onPress={handleIconPress}
+          ></Icon>
+        </View>
+      </ListItem>
     );
   };
-  //console.log("activity >> ", activitiesList[0]);
+
   return (
     <ScrollView
       style={styles.containerScroller}
@@ -55,7 +62,7 @@ export const ActivitiesList = ({ activitiesList, setActivitiesTemp }) => {
       {activitiesList.map((activity) => (
         <ActivityCard
           activity={activity}
-          key={activity.address}
+          key={activity.name}
           setActivitiesTemp={setActivitiesTemp}
           activitiesList={activitiesList}
         />
