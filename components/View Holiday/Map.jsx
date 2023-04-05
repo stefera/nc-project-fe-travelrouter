@@ -54,8 +54,6 @@ const Map = ({ viewHolidayId, view }) => {
     });
   }, [view, isLoading]);
 
-  console.log("tripData >> ", data);
-
   if (isLoading) {
     return <MapView></MapView>;
   } else {
@@ -93,13 +91,15 @@ const Map = ({ viewHolidayId, view }) => {
         })}
 
         {tripData.map((location) => {
-          <MapViewDirections
-            origin={location.coordinates}
-            destination={location.destination.coordinates}
-            strokeWidth={3}
-            apikey=""
-            strokeColor="#FF0000"
-          />;
+          return (
+            <MapViewDirections
+              origin={location.coordinates}
+              destination={location.destination.coordinates}
+              strokeWidth={3}
+              apikey=""
+              strokeColor="#FF0000"
+            />
+          );
         })}
       </MapView>
     );
