@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const HolidayActivities = () => {
+const HolidayActivities = ({holidayData}) => {
 
 return (
-    <Text> This is the holiday activites!</Text>
-)
 
+    <View> 
+        {/* {holidayData.destination.activities.map((activity) => {
+            return (
+            <Text>{activity.name}</Text> 
+
+            )
+        })} */}
+
+    </View>
+
+
+)
 }
 
-    export default HolidayActivities
+    export default HolidayActivities;

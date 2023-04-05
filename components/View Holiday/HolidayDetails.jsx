@@ -1,57 +1,58 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import HolidayActivities from "./HolidayActivities";
+import { fetchTripById } from "../../utilis";
 
-const HolidayDetails = () => {
+const HolidayDetails = ({ viewHolidayId, view }) => {
+  const [tripData, setTripData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    fetchTripById(viewHolidayId).then((data) => {
+      setTripData([data]);
 
+      console.log("tripData >> ", tripData);
+      setIsLoading(false);
+    });
+  }, [view, isLoading]);
 
-  const tripData = [
-    {
-      title: "trip1",
-      author: "fergus",
-      startLocation: {
-        city: "nottingham",
-        coordinates: {              latitude: 53.954,              longitude: -1.4            },
-      },
-      destination: {
-        city: "manchester",
-        coordinates: {              latitude: 50.5,              longitude: -4            },
-        arrivalDate: "2023-04-04",
-        departureDate: "2023-04-08",
-        activities: [
-          {
-            name: "The Warehouse Project",
-            address: "Mayfield Train Station, The Depot, Manchester M1 2QF",
-            coordinates: {
-              latitude: 53.4756,
-              longitude: -2.2253,
-            },
-          },
-          {
-            name: "Hidden at Downtex Mill",
-            address: "Mayfield Train Station, The Depot, Manchester M1 2QF",
-            coordinates: {
-              latitude: 53.4756,
-              longitude: -2.2253,
-            },
-          },
-        ],
-      },
-    },
-  ];
+  console.log("tripData >>", tripData);
+  console.log("isLoading >>", isLoading);
+  console.log("view >>", view);
 
-  return (
-    <View styles={styles.container}>
-      <Text styles={styles.text}> Holiday Details Comp</Text>
-      <Text>You are travelling from: {tripData[0].startLocation.city}</Text>
-      <Text>to {tripData[0].destination.city}</Text>
-      <Text>on the{tripData[0].destination.arrivalDate}</Text>
-      <Text> until the {tripData[0].destination.departureDate}</Text>
-
-      <HolidayActivities />
-    </View>
-  );
+  if (isLoading) {
+    return (
+      <View style={styles.container}>
+        <Text> Loading ...</Text>
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}> Your Upcoming Trip!</Text>
+        <Text>
+          You are travelling from:{" "}
+          <Text style={styles.bold}>{tripData[0].city}</Text>
+        </Text>
+        <Text>
+          to <Text style={styles.bold}>{tripData[0].destination.city}</Text>
+        </Text>
+        <Text>
+          on the{" "}
+          <Text style={styles.bold}>
+            {tripData[0].destination.arrivalDate.substring(0, 10)}
+          </Text>
+        </Text>
+        <Text>
+          {" "}
+          until the{" "}
+          <Text style={styles.bold}>
+            {tripData[0].destination.departureDate.substring(0, 10)}
+          </Text>
+        </Text>
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -65,6 +66,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10,
+  },
+  bold: {
+    fontWeight: "bold",
   },
 });
 
