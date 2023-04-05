@@ -3,70 +3,40 @@ import MapViewDirections from "react-native-maps-directions";
 import React, { useEffect, useState } from "react";
 import { fetchTripById } from "../../utilis";
 
-// const tripData = [
-//   {
-//     title: "trip3",
-//     author: "martin",
-//     city: "london",
-//     coordinates: {
-//       latitude: 51.5072,
-//       longitude: -0.1276,
-//     },
-//     preferences: ["nightlife", "food"],
-//     destination: {
-//       city: "manchester",
-//       coordinates: {
-//         latitude: 53.4808,
-//         longitude: -2.2426,
-//       },
-//       arrivalDate: "2023-04-04",
-//       departureDate: "2023-04-08",
-//       activities: [
-//         {
-//           name: "The Warehouse Project",
-//           address: "Mayfield Train Station, The Depot, Manchester M1 2QF",
-//           coordinates: {
-//             latitude: 53.4756,
-//             longitude: -2.2253,
-//           },
-//         },
-//         {
-//           name: "Hidden at Downtex Mill",
-//           address: "Mayfield Train Station, The Depot, Manchester M1 2QF",
-//           coordinates: {
-//             latitude: 53.4756,
-//             longitude: -2.2253,
-//           },
-//         },
-//       ],
-//     },
-//   },
-// ];
-
 const Map = ({ viewHolidayId, view }) => {
   const [tripData, setTripData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [region, setDestinationRegion] = useState();
+
   console.log(viewHolidayId);
   useEffect(() => {
     fetchTripById(viewHolidayId).then((data) => {
       setTripData([data]);
       setIsLoading(false);
+      setDestinationRegion(tripData[0].destination.coordinates);
     });
   }, [view, isLoading]);
 
-  console.log("tripData >> ", data);
+  // const destinationCoordinates = tripData[0].destination.coordinates;
 
   if (isLoading) {
-    return <MapView></MapView>;
+    return <MapView provider="google"></MapView>;
   } else {
     return (
-      <MapView style={{ height: "200%" }} provider="google">
+      <MapView
+        style={{ height: "300%" }}
+        provider="google"
+        // minZoomLevel={15}
+
+        initialZoom={9}
+        initialRegion={region}
+      >
         {tripData.map((item, index) => {
           return (
             <Marker
               key={index}
               coordinate={item.coordinates}
-              title="Test marker start location"
+              title="Starting Location"
             />
           );
         })}
@@ -74,9 +44,9 @@ const Map = ({ viewHolidayId, view }) => {
         {tripData.map((item, index) => {
           return (
             <Marker
-              key={index}
+              key="destinationcoords"
               coordinate={item.destination.coordinates}
-              title="Test marker end location"
+              title="Holiday Destination:"
             />
           );
         })}
@@ -87,7 +57,7 @@ const Map = ({ viewHolidayId, view }) => {
               key={index}
               coordinate={activity.coordinates}
               title={activity.name}
-              image={require("../../assets/beachflag.png")}
+              image={require("../../assets/iconyellow.png")}
             />
           );
         })}
