@@ -33,7 +33,7 @@ const ListOfTrips = ({ setView, view, viewHolidayId, setViewHolidayId }) => {
   } else {
     return (
       <View style={styles.container}>
-        <Text style={styles.h4}>Your trips</Text>
+        <Text style={styles.h2}>Your saved trips:</Text>
         <ScrollView horizontal={true}>
           {listOfHols.map((selectedHoliday) => {
             return (

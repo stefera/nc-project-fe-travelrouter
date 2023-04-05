@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
   },
 
   body: { fontSize: 16, fontWeight: 400 },
+  bodyLarge: { fontSize: 22, fontWeight: 400 },
   small: { fontSize: 13, fontWeight: 300, color: "grey" },
   smallMarginVert: {
     fontSize: 14,
