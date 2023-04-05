@@ -34,7 +34,7 @@ const FormPage1 = ({
 
   return (
     <View>
-      <View style={styles.topContainerMargin}>
+      <View style={styles.topContainerMargin1}>
         <Text style={styles.inputHeaderMargin}>Origin City</Text>
         <Input
           // label={"Destination"}

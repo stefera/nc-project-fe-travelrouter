@@ -39,7 +39,7 @@ const FormPage2 = (( {checkedList, setCheckedList})=>{
 
     return (
    
-    <View style={styles.topContainerMargin}>
+    <View style={styles.topContainerMargin1}>
           <ScrollView contentContainerStyle={styles.containerThree}>
             {
             preferences.map((item, index) => {

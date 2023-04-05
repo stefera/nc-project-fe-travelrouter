@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
   },
+  topContainerMargin1: {
+    marginHorizontal: 5,
+  },
   textContainerMargin: {
     marginHorizontal: 5,
   },
@@ -163,17 +166,24 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   inputHeaderPage3: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 600,
     alignSelf: "center",
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
+    textAlign: "center",
     margin: 10,
     marginVertical: 20,
+    width: "75%",
   },
 
-  dateTimePicker: { marginLeft: 10, marginBottom: 15, marginRight: 10 },
+  dateTimePicker: {
+    marginLeft: 10,
+    marginBottom: 15,
+    marginRight: 10,
+    marginTop: 5,
+  },
 
   itemCard: {
     // boxShadow: 0,4,8,0,rgba(0,0,0,0.2),
@@ -199,6 +209,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
     borderWidth: 0,
     alignSelf: "center",
+  },
+  primaryButtonContainer3: {
+    height: 55,
+    width: "60%",
+    marginVertical: 10,
+    marginHorizontal: 8,
+    borderWidth: 0,
+    alignSelf: "center",
+    borderRadius: 20,
   },
   primaryButton: {
     alignSelf: "center",
@@ -247,6 +266,14 @@ const styles = StyleSheet.create({
   buttonTitleText1: {
     color: "white",
     fontWeight: 500,
+    alignSelf: "center",
+    justifyContent: "center",
+  },
+  buttonTitleText3: {
+    color: "white",
+    fontWeight: 600,
+    lineHeight: 80,
+    fontSize: 18,
   },
   buttonTitleText2: {
     color: "black",

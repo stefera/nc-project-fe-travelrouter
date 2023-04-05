@@ -135,7 +135,8 @@ const Form = ({ isLoading, setIsLoading, user }) => {
         </Button>
         
       </View>
-      }<Button
+      }
+      {/* <Button
           title={"Next Test"}
           onPress={() => {
             setPage(2)
@@ -145,7 +146,7 @@ const Form = ({ isLoading, setIsLoading, user }) => {
           }}
         >
         
-        </Button>
+        </Button> */}
     </View>
   );
 };

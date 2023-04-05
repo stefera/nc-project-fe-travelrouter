@@ -149,15 +149,17 @@ const FormPage3 = ({
       console.error(error)
     }
   }
-    return (<View>
-    <Text style={styles.inputHeaderPage3}>Click the button below to see the best {checkedList.join(", ")} venues in {destination}.  </Text>
-    <View style={{paddingBottom:100,margin:10, }}>
-      <Button title ={"Generate Itinerary"}  buttonStyle={{
+    return (<View style={{marginVertical:100 }}>
+    <Text style={styles.inputHeaderPage3}>Click to find the best {checkedList.join(", ")} venues in {destination}.  </Text>
+    <View >
+      <Button title ="Generate Itinerary" 
+      titleProps={styles.buttonTitleText3}
+      buttonStyle={{
                 backgroundColor: '#F56853',
-                borderRadius: 10,
+                borderRadius:20
                 
-              }} containerStyle={styles.primaryButtonContainer} onPress={handlePress}/>
-      <Text style={styles.inputHeaderMargin}> </Text>
+              }} containerStyle={styles.primaryButtonContainer3} onPress={handlePress}/>
+      {/* <Text style={styles.inputHeaderMargin}> </Text> */}
       {/* <FlatList data={activities} renderItem={((item)=>{<Item item={item}/>})}/> */}
     </View>
     </View>
@@ -212,7 +214,7 @@ const FormPage3 = ({
     //     <Text style={styles.body}>{name}</Text>
     //   </View>
     // );
-    return <View style={styles.topContainerMargin}>
+    return <View style={styles.topContainerMargin1}>
       <ActivitiesList activitiesList={activitiesTemp} setActivitiesTemp={setActivitiesTemp}/>
       
       <View style={styles.buttonGroupHolder}>
