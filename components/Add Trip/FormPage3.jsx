@@ -96,7 +96,7 @@ const FormPage3 = ({
           {checkedList.slice(0, -1).join(", ") +
             " and " +
             checkedList.slice(-1)}{" "}
-          in {destination} by tapping the buttonbelow!{" "}
+          in {destination} by tapping the button below!{" "}
         </Text>
         <View style={{ paddingBottom: 100, margin: 10 }}>
           <Button
@@ -207,16 +207,18 @@ const FormPage3 = ({
   const LoadPage = () => {
     return (
       <View style={{ padding: 100, paddingVertical: 200 }}>
-        <View>
-          <LottieView
-            source={require("./126076-comacon-planning.json")}
-            style={styles.animation}
-            autoPlay
-          />
+        <LottieView
+          source={require("./126076-comacon-planning.json")}
+          style={styles.animation}
+          autoPlay
+        />
+
+        <View style={{ marginTop: 250 }}>
+          {/* <Text style={styles.h4center}> */}
+          <Text style={styles.h4center}>
+            Fetching suggestions for {destination}...{" "}
+          </Text>
         </View>
-        <Text style={styles.h4center}>
-          Fetching suggestions for {destination}...{" "}
-        </Text>
       </View>
     );
   };

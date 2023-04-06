@@ -141,6 +141,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
   },
+  h4center1: {
+    fontSize: 14,
+    fontWeight: 600,
+    justifyContent: "center",
+    marginTop: 230,
+  },
 
   body: { fontSize: 16, fontWeight: 400 },
   bodyLarge: { fontSize: 22, fontWeight: 400 },
