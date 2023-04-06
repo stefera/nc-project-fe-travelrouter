@@ -21,11 +21,13 @@ const TripCard = ({
 
   useEffect(() => {
     const date = new Date(startDate);
-    const formattedStartDate = date.toLocaleDateString("en-US", {
+    const formattedStartDate = date.toLocaleDateString("en-GB", {
       timeZone: "UTC",
     });
     setformattedStartDate(formattedStartDate);
-  }, [startDate]);
+
+    console.log("preferences >>", preferences);
+  }, [startDate, preferences]);
 
   const handlePress = (id) => {
     console.log(id);
@@ -53,7 +55,7 @@ const TripCard = ({
           </Text>
         </ListItem.Subtitle>
         <ListItem.Subtitle>
-          <Text style={styles.small}>{preferences}</Text>
+          <Text style={styles.small}>{preferences.join(" ")}</Text>
         </ListItem.Subtitle>
         {/* <ListItem.Subtitle>
           {" "}

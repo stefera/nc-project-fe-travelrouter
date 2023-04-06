@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   h2: { fontSize: 28, fontWeight: 600 },
   h3: { fontSize: 20, fontWeight: 600, alignContent: "center" },
   h3Margin: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 600,
     marginLeft: 10,
     marginTop: 20,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
 
   smallMargin: {
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: 300,
     color: "grey",
     marginLeft: 10,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
 
   inputHeader: { fontSize: 14, fontWeight: 600 },
   inputHeaderMargin: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 600,
     marginLeft: 10,
   },
@@ -215,6 +215,15 @@ const styles = StyleSheet.create({
     height: 55,
     width: "60%",
     marginVertical: 10,
+    marginHorizontal: 8,
+    borderWidth: 0,
+    alignSelf: "center",
+    borderRadius: 20,
+  },
+  primaryButtonContainer4: {
+    height: 80,
+    width: "70%",
+    marginVertical: 20,
     marginHorizontal: 8,
     borderWidth: 0,
     alignSelf: "center",

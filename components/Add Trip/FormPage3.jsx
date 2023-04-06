@@ -37,88 +37,11 @@ const FormPage3 = ({
   let activitiesGeo;
 
   const requestObj = { city: destination, preferences: checkedList };
-  // const handlePress = () => {
-  //   // isLoading(true); // assuming isLoading is a function that returns a Promise
-  //   setAnimatedLoader(true)
-  //   fetchActivites(requestObj)
-  //     .then((returnedActivities) => {
-  //       console.log(returnedActivities);
-  //       setActivities(returnedActivities);
-  //       activitiesTemp = returnedActivities
-  //       // return isLoading(false); // assuming isLoading is a function that returns a Promise
-  //     })
-  //     .then(() => {
-  //       console.log("complete");
-  //       console.log(activitiesTemp, "activitiesTemp");
-  //       setAnimatedLoader(false)
-  //       setFormView(1)
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // };
 
-  // })
   const cityLocations = [
     { city: origin, id: "origin" },
     { city: destination, id: "destination" },
   ];
-  // const handlePressFinal = () => {
-  //   console.log(origin, "origin");
-  //   // isLoading(true); // assuming isLoading is a function that returns a Promise
-  //   geoCodeLocations(cityLocations)
-  //     .then((returnedCityObjs) => {
-  //       console.log(returnedCityObjs, "returnedcities");
-  //       // const originReturned = returnedCityObjs
-  //       // .filter((city) => city.id === "origin")
-  //       // .map(({ id, city, coordinates }) => {
-  //       //   console.log( {id:id, city:city, coordinates:coordinates })
-  //       //   originObj=({id:id, city:city, coordinates:coordinates })
-  //       //   return { id, city, coordinates };
-  //       // });
-
-  //       originObj = returnedCityObjs.filter((city) => city.id === "origin")[0]
-  //       destinationObj = returnedCityObjs.filter((city) => city.id === "destination")[0]
-  //       // return isLoading(false); // assuming isLoading is a function that returns a Promise
-  //     })
-  //     .then(() => {activitiesGeo = geoCodeLocations(activities)})
-  //     .then(() => {
-  //       console.log(activitiesGeo)
-  //       setActivities(activitiesGeo)}).then(()=>{
-
-  //         // console.log(originObj, "Final origin obj");
-  //         // console.log(destinationObj, "Final destination obj");
-  //         console.log(activities, "result of geocoding activities");
-  //       }).then(()=>{
-  //         // console.log("finished")
-  //         const TripObj = {
-  //           title: "trip10",
-  //           author: user.name,
-  //           city: originObj.city,
-  //           coordinates: originObj.coordinates,
-  //           preferences:checkedList,
-  //           //
-  //           destination: {
-  //             city: destinationObj.city,
-  //             coordinates: destinationObj.coordinates,
-  //             arrivalDate: arrivalDate,
-  //             departureDate: departureDate,
-  //           },
-  //           activities:activitiesGeo,
-
-  //         }
-  //         // console.log(activities)
-  //   postTrip(TripObj)
-  //   }).then((response)=>{
-  //     //isLoading(false)
-  //     //popup of some kind
-  //     //navigate to Home Page
-  //     console.log (response, "after post Trip")
-  //   })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // };
 
   const Button1 = () => {
     return (
@@ -156,13 +79,10 @@ const FormPage3 = ({
     const handlePress = async () => {
       try {
         setAnimatedLoader(true);
-        console.log(requestObj);
+
         const returnedActivities = await fetchActivites(requestObj);
-        console.log(returnedActivities, "returned");
         setActivities([...returnedActivities]);
         setActivitiesTemp([...returnedActivities]);
-        console.log("complete");
-        console.log(activitiesTemp, "activitiesTemp");
         setAnimatedLoader(false);
         setFormView(1);
       } catch (error) {
@@ -172,16 +92,27 @@ const FormPage3 = ({
     return (
       <View style={{ marginVertical: 100 }}>
         <Text style={styles.inputHeaderPage3}>
-          Find the best {checkedList.join(", ")} venues in {destination} below.{" "}
+          Find the best places to enjoy{" "}
+          {checkedList.slice(0, -1).join(", ") +
+            " and " +
+            checkedList.slice(-1)}{" "}
+          in {destination} by tapping the buttonbelow!{" "}
         </Text>
         <View style={{ paddingBottom: 100, margin: 10 }}>
           <Button
-            title={"Generate My Itinerary"}
+            title={
+              <Text
+                style={{ fontWeight: "bold", color: "white", fontSize: 20 }}
+              >
+                Generate My Itinerary
+              </Text>
+            }
             buttonStyle={{
               backgroundColor: "#F56853",
               borderRadius: 20,
+              height: 50,
             }}
-            containerStyle={styles.primaryButtonContainer3}
+            containerStyle={styles.primaryButtonContainer4}
             onPress={handlePress}
           />
           <View style={styles.buttonGroupHolder}>

@@ -29,11 +29,11 @@ const Form = ({ isLoading, setIsLoading, user }) => {
   const [checkedList, setCheckedList] = useState([]);
   const [activities, setActivities] = useState([]);
 
-  const formTitles = ["Destination Details", "Preferences", "Activities"];
+  const formTitles = ["Travel Details", "Interests", "Activities"];
   const subtitles = [
-    "Input your holiday details below",
+    "Input your holiday details",
     "Let us know what you're interested in on this holiday",
-    "Generate, modify and save your itenarary below",
+    "Generate, modify and save your itenarary",
   ];
 
   const pageDisplay = () => {
@@ -108,34 +108,33 @@ const Form = ({ isLoading, setIsLoading, user }) => {
         </Text>
       </View>
       <View className="body">{pageDisplay()}</View>
-      {page>1?null:
-      <View style={styles.buttonGroupHolder}>
-        <Button
-         containerStyle={styles.primaryButtonContainer}
-         buttonStyle = {styles.secondaryButton}
-         titleStyle ={styles.buttonTitleText2}
-          title="Back"
-          disabled={page === 0}
-          onPress={() => {
-            setPage((currPage) => currPage - 1);
-          }}
-        />
-        <Button
-          containerStyle={styles.primaryButtonContainer2}
-          buttonStyle = {styles.primaryButton}
-          titleStyle ={styles.buttonTitleText1}
-          title={"Continue"}
-          disabled={page === formTitles.length - 1}
-          onPress={() => {
-            setPage((currPage) => currPage + 1);
-          }}
-        >
-          {" "}
-          Continue{" "}
-        </Button>
-        
-      </View>
-      }
+      {page > 1 ? null : (
+        <View style={styles.buttonGroupHolder}>
+          <Button
+            containerStyle={styles.primaryButtonContainer}
+            buttonStyle={styles.secondaryButton}
+            titleStyle={styles.buttonTitleText2}
+            title="Back"
+            disabled={page === 0}
+            onPress={() => {
+              setPage((currPage) => currPage - 1);
+            }}
+          />
+          <Button
+            containerStyle={styles.primaryButtonContainer2}
+            buttonStyle={styles.primaryButton}
+            titleStyle={styles.buttonTitleText1}
+            title={"Continue"}
+            disabled={page === formTitles.length - 1}
+            onPress={() => {
+              setPage((currPage) => currPage + 1);
+            }}
+          >
+            {" "}
+            Continue{" "}
+          </Button>
+        </View>
+      )}
       {/* <Button
           title={"Next Test"}
           onPress={() => {
