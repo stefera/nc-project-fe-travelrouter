@@ -22,6 +22,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 30,
   },
+  onboardingContainer: {
+    flex: 1,
+    alignItems: "center",
+  },
+  onboardingContent: {
+    padding: 50,
+  },
+
   containerThree: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -36,7 +44,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     minHeight: 300,
   },
-
+  logo: {
+    width: "70%",
+    maxHeight: 200,
+    maxWidth: 200,
+  },
   preferenceHolder: {
     width: "31%",
     alignItems: "center",

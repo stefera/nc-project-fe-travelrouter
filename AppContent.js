@@ -7,13 +7,14 @@ import Settings from "./components/Profile+Settings/Settings";
 import ProfileAndSettings from "./components/Profile+Settings/ProfileAndSettings";
 import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import SignUp from "./components/SignUp/SignUp";
 // const HomeStack = createNativeStackNavigator();
 // const AddTripStack = createNativeStackNavigator();
 // const MoreStack = createNativeStackNavigator();
 
 export default function AppContent({ styles }) {
   const [isLoading, setIsLoading] = useState();
-  const [user, setUser] = useState({ name: "guest" });
+  const [user, setUser] = useState();
   // const [listOfHolidays, setListOfHolidays] = useState([]); moved to Homepage
   const [holiday, setHoliday] = useState({});
   const [preferences, setPreferences] = useState([]);
@@ -39,9 +40,14 @@ export default function AppContent({ styles }) {
     return <Settings />;
   };
 
-  return (
+  return !user ? (
+    <SignUp />
+  ) : (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Add Holiday" activeColor="#F56853">
+      <Tab.Navigator
+        initialRouteName={user ? "Home" : "SignUp"}
+        activeColor="#F56853"
+      >
         <Tab.Screen
           name="Home"
           component={HomeScreen}
