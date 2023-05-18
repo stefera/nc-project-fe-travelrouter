@@ -4,8 +4,11 @@ import styles from "../../App-stylesheet";
 
 const CustomInput = ({ params }) => (
   <View>
-    <View>
-      <TextInput style={styles.customInput}>Custom Input</TextInput>
+    <View style={styles.customInputContainer}>
+      <TextInput
+        placeholder="placeholder"
+        style={styles.customInput}
+      ></TextInput>
     </View>
   </View>
 );

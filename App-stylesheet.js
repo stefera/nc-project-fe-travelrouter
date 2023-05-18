@@ -56,6 +56,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee",
     padding: 10,
   },
+  customInput: {
+    fontSize: 16,
+    color: "black",
+  },
+  customInputContainer: {
+    width: "100%",
+    borderRadius: 10,
+    height: 60,
+    backgroundColor: "white",
+    borderColor: "grey",
+    borderWidth: 1,
+  },
 
   dashboard: {
     justifyContent: "center",
