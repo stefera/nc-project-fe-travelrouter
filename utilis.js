@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const db = axios.create({ baseURL: "http://localhost:8999/" });
+const db = axios.create({ baseURL: "http://localhost:8991/" });
 
 export const fetchActivites = (params) => {
-  console.log("here");
+  console.log("here1");
   return db
     .get("/api/trips/trip1/makePreferences", {
       params: params,
@@ -20,7 +20,7 @@ export const fetchActivites = (params) => {
 export const geoCodeLocations = (params) => {
   const cities = params;
   console.log(cities);
-  //console.log("here in utils", params);
+  console.log("here- geoCode", params);
   return db
     .get("/api/trips/geoCodeActivities", { params: cities })
     .then(({ data }) => {
@@ -31,7 +31,7 @@ export const geoCodeLocations = (params) => {
 };
 
 export const postTrip = (params) => {
-  //console.log("here, posttrip");
+  console.log("here, posttrip");
   return (
     db
       .post("/api/trips/", {

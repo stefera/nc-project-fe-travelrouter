@@ -207,11 +207,11 @@ const FormPage3 = ({
   const LoadPage = () => {
     return (
       <View style={{ padding: 100, paddingVertical: 200 }}>
-        <LottieView
+        {/* <LottieView
           source={require("./126076-comacon-planning.json")}
           style={styles.animation}
           autoPlay
-        />
+        /> */}
 
         <View style={{ marginTop: 250 }}>
           {/* <Text style={styles.h4center}> */}
