@@ -25,9 +25,11 @@ const styles = StyleSheet.create({
   onboardingContainer: {
     flex: 1,
     alignItems: "center",
+    alignSelf: "center",
   },
   onboardingContent: {
-    padding: 50,
+    paddingVertical: 50,
+    width: "90%",
   },
 
   containerThree: {
@@ -45,9 +47,9 @@ const styles = StyleSheet.create({
     minHeight: 300,
   },
   logo: {
-    width: "70%",
-    maxHeight: 200,
-    maxWidth: 200,
+    maxWidth: 150,
+    maxWidth: "50%",
+    alignSelf: "center",
   },
   preferenceHolder: {
     width: "31%",
@@ -56,17 +58,26 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee",
     padding: 10,
   },
-  customInput: {
+  customTextInput: {
+    width: "100%",
     fontSize: 16,
-    color: "black",
+    height: 40,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    borderWidth: 1,
   },
-  customInputContainer: {
+  customTextInputContainer: {
     width: "100%",
     borderRadius: 10,
-    height: 60,
     backgroundColor: "white",
-    borderColor: "grey",
-    borderWidth: 1,
+    // borderColor: "grey",
+    borderWidth: 0,
+  },
+  customTextInputTopContainer: {
+    width: "100%",
+    rowGap: 5,
+    gap: 5,
+    marginBottom: 20,
   },
 
   dashboard: {
@@ -149,7 +160,19 @@ const styles = StyleSheet.create({
   },
   h1: { fontSize: 35, fontWeight: 600 },
   h2: { fontSize: 28, fontWeight: 600 },
-  h3: { fontSize: 20, fontWeight: 600, alignContent: "center" },
+  h2center: {
+    fontSize: 28,
+    fontWeight: 600,
+    textAlign: "center",
+    alignSelf: "center",
+  },
+
+  h3center: {
+    fontSize: 20,
+    fontWeight: 600,
+    textAlign: "center",
+    alignSelf: "center",
+  },
   h3Margin: {
     fontSize: 24,
     fontWeight: 600,
@@ -162,14 +185,15 @@ const styles = StyleSheet.create({
   h4center: {
     fontSize: 14,
     fontWeight: 600,
-    justifyContent: "center",
+    textAlign: "center",
     alignSelf: "center",
   },
   h4center1: {
     fontSize: 14,
     fontWeight: 600,
-    justifyContent: "center",
+    textAlign: "center",
     marginTop: 230,
+    alignSelf: "center",
   },
 
   body: { fontSize: 16, fontWeight: 400 },

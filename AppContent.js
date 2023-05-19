@@ -7,7 +7,8 @@ import Settings from "./components/Profile+Settings/Settings";
 import ProfileAndSettings from "./components/Profile+Settings/ProfileAndSettings";
 import React, { useState } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import SignUp from "./components/SignUp/SignUp";
+import SignUp from "./components/SignUpLogIn/SignUp.jsx";
+
 // const HomeStack = createNativeStackNavigator();
 // const AddTripStack = createNativeStackNavigator();
 // const MoreStack = createNativeStackNavigator();
